@@ -16,6 +16,7 @@ class Teacher(models.Model):
     
 class Course(models.Model):
     course_id = models.CharField(max_length = 15, primary_key = True,unique = True)
+    course_name = models.CharField(max_length = 15, null = True, blank = True)
     teacher = models.ForeignKey(Teacher, on_delete = models.CASCADE, null = True, blank = True)
     description = models.CharField(max_length = 1000, null = True, blank = True)
 
