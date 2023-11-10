@@ -16,7 +16,7 @@ course13 = Course(course_id="030828", course_name="COMP3259", teacher=Teacher.ob
 course14 = Course(course_id="030830", course_name="COMP3270", teacher=Teacher.objects.get(name="Dr. D. Schnieders"), description="Artificial intelligence")
 course15 = Course(course_id="030814", course_name="COMP3278", teacher=Teacher.objects.get(name="Dr. C.K. Chui"), description="Introduction to database management systems")
 course16 = Course(course_id="030833", course_name="COMP3314", teacher=Teacher.objects.get(name="Dr. Hengshuang Zhao"), description="Machine learning")
-course17 = Course(course_id="034494", course_name="COMP316", teacher=Teacher.objects.get(name="Dr. Giulio Chiribella"), description="Quantum information and computation")
+course17 = Course(course_id="034494", course_name="COMP3316", teacher=Teacher.objects.get(name="Dr. Giulio Chiribella"), description="Quantum information and computation")
 course18 = Course(course_id="030837", course_name="COMP3322", teacher=Teacher.objects.get(name="Dr. A.T.C. Tam"), description="Modern Technologies on World Wide Web")
 course19 = Course(course_id="030838", course_name="COMP3323", teacher=Teacher.objects.get(name="Dr. R.C.K. Cheng"), description="Advanced database systems")
 course20 = Course(course_id="030844", course_name="COMP3329", teacher=Teacher.objects.get(name="Dr. T.W. Chim"), description="Computer game design and programming")
