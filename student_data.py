@@ -1,3 +1,4 @@
+from manager.models import Student
 students_data = [
     {
         "name": "3035772432",
@@ -30,3 +31,16 @@ students_data = [
         "bio": "Nanqi Gong has a strong interest in network security, dedicating his studies to understanding and mitigating cyber threats."
     }
 ]
+
+def load_data(dat):
+    for student in dat:
+        obj, created = Student.objects.get_or_create (
+            name = student["name"],
+            usrname = student["usrname"],
+            email = student["email"],
+            bio = student["bio"]
+        )
+        if not created:
+            break
+
+load_data(students_data)

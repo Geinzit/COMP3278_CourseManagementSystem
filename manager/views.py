@@ -1,8 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import HttpResponse
-#from django.contrib.auth import login,authenticate, logout
-#from django.contrib.auth.decorate import login_required
-#from django.contrib.auth.models import User
+
 from .models import Student, Teacher, Course, CourseSchedule, Enrollment
 
 def index(request):
@@ -11,3 +9,8 @@ def index(request):
 def details(request, course_id):
     return HttpResponse("You are looking at the details of course %s." % course_id)
 
+# def schedule(request):
+    # get the logged in student
+
+    # update later
+    

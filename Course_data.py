@@ -1,10 +1,12 @@
 from django.db import models
 
+from manager.models import Course, Teacher
+
 course1 = Course(course_id="030815", course_name="COMP1117", teacher=Teacher.objects.get(name="Dr. Loretta Choi"), description="Computer Programming")
 course2 = Course(course_id="030811", course_name="COMP2119", teacher=Teacher.objects.get(name="Dr. H.T.H. Chan"), description="Introduction to data structures and algorithms")
 course3 = Course(course_id="030812", course_name="COMP2120", teacher=Teacher.objects.get(name="Dr. Qi Zhao"), description="Computer organization")
 course4 = Course(course_id="030810", course_name="COMP2121", teacher=Teacher.objects.get(name="Dr. H.T.H. Chan"), description="Discrete mathematics")
-course5 = Course(course_id="030823", course_name="COMP2396", teacher=Teacher.objects.get(name="Dr. T W Chim"), description="Object-oriented programming and Java")
+course5 = Course(course_id="030823", course_name="COMP2396", teacher=Teacher.objects.get(name="Dr. T.W. Chim"), description="Object-oriented programming and Java")
 course6 = Course(course_id="037006", course_name="COMP2113", teacher=Teacher.objects.get(name="Dr. Chenxiong Qian"), description="Programming technologies")
 course7 = Course(course_id="038210", course_name="COMP2501", teacher=Teacher.objects.get(name="Dr. Ruibang Luo"), description="Introduction to Data Science and Engineering")
 course8 = Course(course_id="030816", course_name="COMP3230", teacher=Teacher.objects.get(name="Dr. A.T.C. Tam"), description="Principles of operating systems")
@@ -21,4 +23,13 @@ course18 = Course(course_id="030837", course_name="COMP3322", teacher=Teacher.ob
 course19 = Course(course_id="030838", course_name="COMP3323", teacher=Teacher.objects.get(name="Dr. R.C.K. Cheng"), description="Advanced database systems")
 course20 = Course(course_id="030844", course_name="COMP3329", teacher=Teacher.objects.get(name="Dr. T.W. Chim"), description="Computer game design and programming")
 
+for i in range(1,21):
+    #print(i)
+    name = f"course{i}"
+    #print(name,globals()[name])
+    course = globals()[name]
+    course.save()
+    #course, created = Course.objects.get_or_create(globals()[name])
+   # if not created:
+    #    break
 

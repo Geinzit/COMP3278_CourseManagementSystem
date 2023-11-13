@@ -1,4 +1,5 @@
 from django.utils import timezone
+from manager.models import Course, CourseSchedule
 import datetime
 
 # Helper function to convert weekday and time to a datetime object for the current week
@@ -20,10 +21,14 @@ schedule_data = {
 }
 
 # Creating CourseSchedule instances
+CourseSchedule.objects.all().delete()
+
 for course_id, times in schedule_data.items():
     course = Course.objects.get(course_id=course_id)
     for weekday, start, end in times:
         start_time = get_weekday_datetime(weekday, start)
         end_time = get_weekday_datetime(weekday, end)
         course_schedule = CourseSchedule(course=course, start_time=start_time, end_time=end_time)
-        course_schedule.save()
+        #print(course_schedule.__dict__)
+        CourseSchedule.objects.get_or_create(course=course, start_time=start_time, end_time=end_time)
+        

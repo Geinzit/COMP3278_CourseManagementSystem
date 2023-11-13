@@ -11,7 +11,7 @@ class Teacher(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length = 100, null = True, blank = True)
     department = models.CharField(max_length = 100, null = True, blank = True)
-    bio = models.CharField(max_length = 1000, null = True, blank = True)
+    bio = models.CharField(max_length = 10000, null = True, blank = True)
 
     
 class Course(models.Model):

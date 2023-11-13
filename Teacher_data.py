@@ -1,6 +1,6 @@
 from django.db import models
 
-
+from manager.models import Teacher
 
 # Creating instances of the Teacher model
 teacher1 = Teacher(
@@ -284,7 +284,31 @@ teacher25 = Teacher(
 )
 
 
-
+teacher1.save()
+teacher2.save()
+teacher3.save()
+teacher4.save()
+teacher5.save()
+teacher6.save()
+teacher7.save()
+teacher8.save()
+teacher9.save()
+teacher10.save()
+teacher11.save()
+teacher12.save()
+teacher13.save()
+teacher14.save()
+teacher15.save()
+teacher16.save()
+teacher17.save()
+teacher18.save()
+teacher19.save()
+teacher20.save()
+teacher21.save()
+teacher22.save()
+teacher23.save()
+teacher24.save()
+teacher25.save()
 
 
 
