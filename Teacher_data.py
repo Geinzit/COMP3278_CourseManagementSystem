@@ -283,6 +283,62 @@ teacher25 = Teacher(
          "He is also an active member and contributor to various academic societies and conferences.")
 )
 
+teacher26 = Teacher(
+    id="010026",
+    name="Dr. Alice Yuen",
+    department="Department of Computer Science",
+    bio=("Dr. Alice Yuen is an Associate Professor at the Department of Computer Science in the University of Hong Kong. "
+         "Her research focuses on artificial intelligence, machine learning, and their applications in healthcare. "
+         "Dr. Yuen joined the faculty in 2012 after a successful career in the industry. "
+         "She earned her PhD in Computer Science from Stanford University, where she also completed her MSc. "
+         "Her work has been recognized with several awards, including the Young Scientist Award in 2018. "
+         "Dr. Yuen is committed to bridging the gap between academia and industry through collaborative projects.")
+)
+
+teacher27 = Teacher(
+    id="010027",
+    name="Dr. Bob He",
+    department="Department of Computer Science",
+    bio=("Dr. Bob He is a Senior Lecturer in the Department of Computer Science at the University of Hong Kong. "
+         "He specializes in network security, cryptography, and blockchain technology. "
+         "Before joining academia, Dr. He worked in the IT security industry for over a decade. "
+         "He received his PhD from the University of Cambridge and has since been an advocate for practical cybersecurity education. "
+         "Dr. He has received multiple grants for his research in securing digital transactions and is a frequent speaker at international conferences.")
+)
+
+teacher28 = Teacher(
+    id="010028",
+    name="Dr. Carol Wu",
+    department="Department of Computer Science",
+    bio=("Dr. Carol Wu is an Assistant Professor at the Department of Computer Science, University of Hong Kong. "
+         "Her research areas include data mining, big data analytics, and computational biology. "
+         "Dr. Wu obtained her PhD from MIT, where she developed several widely-used algorithms for large-scale data analysis. "
+         "She has collaborated extensively with biologists to apply computational techniques in understanding genetic data. "
+         "Dr. Wu has been awarded several research fellowships and grants for her innovative work in computational biology.")
+)
+
+teacher29 = Teacher(
+    id="010029",
+    name="Dr. David Li",
+    department="Department of Computer Science",
+    bio=("Dr. David Li is a Professor in the Department of Computer Science at the University of Hong Kong. "
+         "His expertise lies in software engineering, distributed systems, and cloud computing. "
+         "He has been with the department since 2000, contributing significantly to both teaching and research. "
+         "Dr. Li completed his PhD at the University of California, Berkeley. "
+         "He has published numerous papers in prestigious journals and has been a principal investigator on several major research projects funded by government and industry partners.")
+)
+
+teacher30 = Teacher(
+    id="010030",
+    name="Dr. Emily Zhang",
+    department="Department of Computer Science",
+    bio=("Dr. Emily Zhang is an Associate Professor at the University of Hong Kong, Department of Computer Science. "
+         "Her research interests include human-computer interaction, virtual reality, and educational technology. "
+         "After obtaining her PhD from the University of Toronto, Dr. Zhang worked in a leading tech company's R&D department. "
+         "She has been instrumental in developing new methodologies for user experience research and has received accolades for her innovative teaching methods. "
+         "Dr. Zhang actively collaborates with industry partners to bring advanced HCI concepts into real-world applications.")
+)
+
 
 teacher1.save()
 teacher2.save()
@@ -309,6 +365,12 @@ teacher22.save()
 teacher23.save()
 teacher24.save()
 teacher25.save()
+teacher26.save()
+teacher27.save()
+teacher28.save()
+teacher29.save()
+teacher30.save()
+
 
 
 

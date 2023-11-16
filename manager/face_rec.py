@@ -8,13 +8,13 @@ def pil_to_cv2(pil_image):
     open_cv_image = open_cv_image[:, :, ::-1].copy() 
     return open_cv_image
 
-curr_dir = "/Users/lvzhiheng/COMP3278_CourseManagementSystem/manager/"
+# curr_dir = "/Users/lvzhiheng/COMP3278_CourseManagementSystem/manager/"
 
 def load_recognizer_and_labels():
     recognizer = cv2.face.LBPHFaceRecognizer_create()
-    recognizer.read(f"{curr_dir}data/train.yml")
+    recognizer.read(f"manager/data/train.yml")
 
-    with open(f"{curr_dir}data/labels.pickle", "rb") as f:
+    with open(f"manager/data/labels.pickle", "rb") as f:
         labels = pickle.load(f)
         labels = {v: k for k, v in labels.items()}
 
@@ -24,7 +24,7 @@ def face_rec(img):
     # Input: image
     # Output: name of student
     recognizer, labels = load_recognizer_and_labels()
-    face_cascade = cv2.CascadeClassifier(f"{curr_dir}data/haarcascade_frontalface_default.xml")
+    face_cascade = cv2.CascadeClassifier(f"manager/data/haarcascade_frontalface_default.xml")
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.5, minNeighbors=5)
