@@ -22,9 +22,21 @@ class Course(models.Model):
 
     
 class CourseSchedule(models.Model):
+    WEEKDAY_CHOICES = {
+        (0, "Monday"),
+        (1, "Tuesday"),
+        (2, "Wednesday"),
+        (3, "Thursday"),
+        (4, "Friday"),
+        (5, "Saturday"),
+        (6, "Sunday"),
+    }
+
+    
     course = models.ForeignKey(Course, related_name = "course_schedule", on_delete = models.CASCADE)
-    start_time = models.DateTimeField(null = True, blank = True)
-    end_time = models.DateTimeField(null = True, blank = False)
+    weekday = models.IntegerField(choices = WEEKDAY_CHOICES, default = 0)
+    start_time = models.TimeField(null = True, blank = True)
+    end_time = models.TimeField(null = True, blank = True)
 
 
     
