@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <!-- 添加 CSS 样式 -->
+</head>
+<body>
+    <h2>Login Page</h2>
+    <form method="post" action="{% url 'login' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <video id="video" width="640" height="480" autoplay></video>
+        <canvas id="canvas" width="640" height="480" style="display: none;"></canvas><br>
+        <button id="capture">Capture Photo</button>
+        <button id="retake" style="display: none;">Retake Photo</button><br><br>
+        <input id="webimg" name="photo" type="text" style="display: none;">
+        <input type="submit" value="Login">
+    </form>
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const captureButton = document.getElementById('capture');
+        const retakeButton = document.getElementById('retake');
+        const webimg = document.getElementById('webimg');
+        let stream = null;
+    
+        function setupCamera() {
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(function(s) {
+                        stream = s;
+                        video.srcObject = stream;
+                        video.play();
+                        video.style.display = 'block';
+                        canvas.style.display = 'none';
+                        retakeButton.style.display = 'none';
+                    })
+                    .catch(function(error) {
+                        console.log("Something went wrong!");
+                    });
+            }
+        }
+    
+        captureButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, 640, 480);
+            webimg.value = canvas.toDataURL('image/png');
+            video.style.display = 'none';
+            canvas.style.display = 'block';
+            retakeButton.style.display = 'block';
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+        });
+    
+        retakeButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            setupCamera();
+        });
+    
+        setupCamera();
+    </script>
+    
+</body>
+</html>
