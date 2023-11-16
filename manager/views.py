@@ -55,7 +55,7 @@ def login_page(request):
         # 打印用户名和识别出的学生名字
         print(f"Username: {username}, Recognized as: {student_name}")
 
-        return HttpResponse(f"Username: {username}, Recognized as: {student_name}, Photo received.")
+        return redirect(f'/manager/curriculum/?student_id={student_name}')
 
     return render(request, 'login.html')
 
@@ -65,3 +65,19 @@ def course_detail(request, course_id):
     response_content = f"This is course {course_id}"
     # 返回响应
     return HttpResponse(response_content)
+
+def curriculum(request):
+    # http://127.0.0.1:8000/manager/curriculum/?student_id=123
+    def is_valid_student(student_id):
+        return True
+    
+    # 获取查询参数 student_id
+    student_id = request.GET.get('student_id', None)
+
+    # 这里实现你的验证逻辑
+    if not student_id or not is_valid_student(student_id):
+        # 如果验证失败，可以重定向或返回错误信息
+        return HttpResponse("Invalid or missing student ID", status=400)
+
+    # 如果验证成功，继续处理
+    return HttpResponse(f"Curriculum for student ID: {student_id}")
