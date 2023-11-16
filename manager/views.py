@@ -58,3 +58,10 @@ def login_page(request):
         return HttpResponse(f"Username: {username}, Recognized as: {student_name}, Photo received.")
 
     return render(request, 'login.html')
+
+
+def course_detail(request, course_id):
+    # 构造响应字符串
+    response_content = f"This is course {course_id}"
+    # 返回响应
+    return HttpResponse(response_content)
