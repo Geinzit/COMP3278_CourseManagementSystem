@@ -12,13 +12,12 @@ from io import BytesIO
 from .models import Student, Teacher, Course, CourseSchedule, Enrollment
 from .face_rec import face_rec, pil_to_cv2
 
-def index(request):
-    student_name = "3035844077" # subject_to_change
+def curriculum(request, student_name):
     Enrollments = Enrollment.objects.filter(student = student_name)
     Enrolled_courses = Course.objects.filter(course_id__in = Enrollments)
     
-    Events = CourseSchedule.objects.filter(course__in = Enrolled_courses)
-    Events = Events.order_by("start_time")
+    Sessions = CourseSchedule.objects.filter(course__in = Enrolled_courses)
+    Sessions = Events.order_by("start_time")
 
     # getting the events that will happen in an hour
     current_time = timezone.now()
@@ -27,18 +26,39 @@ def index(request):
     current_weekday = current_time.weekday()
     next_weekday = (current_weekday + 1) % 7
 
-    EventsIn1H = Events.filter(Q(weekday=current_weekday, start_time__range = (current_time.time(), one_hour_later.time())) | Q(weekday=next_weekday, start_time__lte=one_hour_later.time()))
+    SessionIn1H = Events.filter(Q(weekday=current_weekday, start_time__range = (current_time.time(), one_hour_later.time())) | Q(weekday=next_weekday, start_time__lte=one_hour_later.time()))
 
     
-    context = {"enrolled_classes": Enrolled_courses, "events": Events, "events1h": EventsIn1H}
-    return render(request, "manager/index.html", context)
+    context = {"enrolled_classes": Enrolled_courses, "sessions": Events, "sessions1h": EventsIn1H}
+    return render(request, "curriculum.html", context)
     
 #def add_course(request):
    # if request.method == "POST":
-        
 
-def details(request, course_id):
-    return HttpResponse("You are looking at the details of course %s." % course_id)
+def index(request):
+    now = timezone.now()
+    courses = Course.objects.all()
+    
+    for course in courses:
+        course_schedules = schedule.filter(course=course)
+        for course_schedule in course_schedules:
+            processed_courses.append({
+                'course_id': course.course_id,
+                'course_name': course.course_name,
+                'teacher': course.teacher
+                'description': course.description
+            })
+    return render(request, 'index.html', {'course_list': processed_courses})
+   
+def course(request, course_id):
+    course = Course.objects.get(course_id = course_id)
+    course_schedules = CourseSchedule.objects.get(course = course_id)
+    context = {"course":course, "course_schedules":course_schedules}
+    return render(request, "course.html", context)
+    
+def teacher(request, teacher_id):
+    teacher = Teacher.objects.get(id=teacher_id)
+    return render(request, 'teacher.html', {'teacher': teacher})
 
     
 def login_page(request):
