@@ -22,6 +22,16 @@ course17 = Course(course_id="034494", course_name="COMP3316", teacher=Teacher.ob
 course18 = Course(course_id="030837", course_name="COMP3322", teacher=Teacher.objects.get(name="Dr. A.T.C. Tam"), description="Modern Technologies on World Wide Web")
 course19 = Course(course_id="030838", course_name="COMP3323", teacher=Teacher.objects.get(name="Dr. R.C.K. Cheng"), description="Advanced database systems")
 course20 = Course(course_id="030844", course_name="COMP3329", teacher=Teacher.objects.get(name="Dr. T.W. Chim"), description="Computer game design and programming")
+#course21 = Course(course_id="040845", course_name="COMP3431", teacher=Teacher.objects.get(name="Dr. Alice Yuen"), description="Blockchain Fundamentals")
+#course22 = Course(course_id="040846", course_name="COMP3532", teacher=Teacher.objects.get(name="Dr. Bob He"), description="Cybersecurity and Cryptography")
+#course23 = Course(course_id="040847", course_name="COMP3633", teacher=Teacher.objects.get(name="Dr. Carol Wu"), description="Data Mining and Analysis")
+#course24 = Course(course_id="040848", course_name="COMP3734", teacher=Teacher.objects.get(name="Dr. David Li"), description="Advanced Software Engineering")
+#course25 = Course(course_id="040849", course_name="COMP3835", teacher=Teacher.objects.get(name="Dr. Emily Zhang"), description="Internet of Things Applications")
+#course26 = Course(course_id="040850", course_name="COMP3936", teacher=Teacher.objects.get(name="Dr. Alice Yuen"), description="Deep Learning")
+#course27 = Course(course_id="040851", course_name="COMP4037", teacher=Teacher.objects.get(name="Dr. Bob He"), description="Cloud Computing Architecture")
+#course28 = Course(course_id="040852", course_name="COMP4138", teacher=Teacher.objects.get(name="Dr. Carol Wu"), description="Augmented Reality and Virtual Reality")
+#course29 = Course(course_id="040853", course_name="COMP4239", teacher=Teacher.objects.get(name="Dr. David Li"), description="Human-Computer Interaction Design")
+#course30 = Course(course_id="040854", course_name="COMP4340", teacher=Teacher.objects.get(name="Dr. Emily Zhang"), description="Robotics and Automation")
 
 for i in range(1,21):
     #print(i)
