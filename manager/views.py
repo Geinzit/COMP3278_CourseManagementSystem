@@ -1,12 +1,14 @@
-from django.shortcuts import render, r
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django.db.models import Q
 from django.utils import timezone
 from datetime import datetime, timedelta
 from .models import Student, Teacher, Course, CourseSchedule, Enrollment
-from .forms import EventForm
+
 import base64
 from PIL import Image
 from io import BytesIO
+
 from .models import Student, Teacher, Course, CourseSchedule, Enrollment
 from .face_rec import face_rec, pil_to_cv2
 
