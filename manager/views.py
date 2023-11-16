@@ -45,8 +45,8 @@ def index(request):
             processed_courses.append({
                 'course_id': course.course_id,
                 'course_name': course.course_name,
-                'teacher': course.teacher
-                'description': course.description
+                'teacher': course.teacher,
+                'description': course.description,
             })
     return render(request, 'index.html', {'course_list': processed_courses})
    
