@@ -1,6 +1,5 @@
 <!-- templates/course1_information.html -->
 
-
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -13,6 +12,8 @@
         th, td { border: 1px solid #ddd; padding: 8px; }
         th { background-color: #f2f2f2; text-align: left; }
         .section-title { font-size: 20px; margin-top: 20px; }
+        .highlight { font-weight: bold; font-size: larger; }
+        .course-information { white-space: pre-wrap; /* Preserves white space and line breaks */ }
     </style>
 </head>
 <body>
@@ -40,16 +41,22 @@
             <th>Course Grade</th>
             <td>A+ to F</td>
         </tr>
-        <tr>
-            <th>Prerequisite(s)/ Corequisite(s)/Impermissible Combination(s)</th>
-            <td>{{ course.course_information|split:"\n\n"|first }}</td>
-        </tr>
     </table>
 
-    <div class="section-title">Approved Syllabus</div>
-    <p>{{ course.course_information|split:"\n\n"|slice:"1:2"|join:" " }}</p>
+    <div class="course-information">
+        <pre id="courseInfo">{{ course.course_information }}</pre>
+    </div>
 
-    <div class="section-title">Course Objectives</div>
-    <p>{{ course.course_information|split:"\n\n"|last }}</p>
+    <script>
+        // JavaScript to highlight section titles
+        window.onload = function() {
+            var courseInfoText = document.getElementById('courseInfo').innerHTML;
+            courseInfoText = courseInfoText.replace('Prerequisites', '<span class="highlight">Prerequisite(s)</span>');
+            courseInfoText = courseInfoText.replace('Approved Syllabus', '<span class="highlight">Approved Syllabus</span>');
+            courseInfoText = courseInfoText.replace('Course Objectives', '<span class="highlight">Course Objectives</span>');
+            document.getElementById('courseInfo').innerHTML = courseInfoText;
+        };
+    </script>
 </body>
 </html>
+
