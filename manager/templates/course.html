@@ -14,7 +14,7 @@
         <div class="text">
             <h1>{{ course.description }}</h1>
         </div>
-        <img src="{% static 'img\banner.png' %}" alt="">
+        <img src="{% static 'img/banner.png' %}" alt="">
     </div>
     <div class="CourseDetails">
         <div class="CourseDetails_title">
@@ -23,6 +23,8 @@
                 <path d="M512 187.24L699.501 512 887 836.76H137L324.5 512z" p-id="4180"></path>
             </svg>
             <h1>Course Information</h1>
+            <!-- 添加的详细信息链接 -->
+            <a href="{% url 'course1_information' course.course_id %}" class="detail-link">Detail</a>
         </div>
         <div class="CourseDetails_content">
             <div class="CourseDetails_content_item">
@@ -33,14 +35,6 @@
                 <h2>Course Id</h2>
                 <p>{{ course.course_id }}</p>
             </div>
-            <!-- <div class="CourseDetails_content_item">
-                <h2>Course Description</h2>
-                <p>{{ course.description }}</p>
-            </div> 
-            <div class="CourseDetails_content_item">
-                <h2>Course Teacher</h2>
-                <p><a href="/teacher/{{ teacher.id }}">{{ teacher.name }}</a></p>
-            </div>-->
             <div class="CourseDetails_content_item">
                 <h2>Course Schedule</h2>
                 <div>
@@ -48,12 +42,12 @@
                         <p>StartTime: {{ schedule.start_time }}</p>   
                         <p>EndTime: {{ schedule.end_time }}</p>
                     {% empty %}
-                        <p>No course schedules found.</li>
+                        <p>No course schedules found.</p>
                     {% endfor %}
                 </div>
             </div>
 
-            <!-- Add enrollment button -->
+            <!-- 添加报名按钮 -->
             <form action="{% url 'add_course' course.course_id %}" method="post">
                 {% csrf_token %}
                 <button type="submit">Enroll in Course</button>
