@@ -2,12 +2,6 @@ from django.db import models
 
 from manager.models import Course, Teacher
 
-class Course(models.Model):
-    course_id = models.CharField(max_length=20)
-    course_name = models.CharField(max_length=100)
-    teacher = models.ForeignKey('Teacher', on_delete=models.CASCADE)
-    description = models.TextField()
-    course_information = models.TextField()
 
 course1 = Course(
     course_id="030815",
