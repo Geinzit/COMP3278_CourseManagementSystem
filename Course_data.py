@@ -7,14 +7,13 @@ class Course(models.Model):
     course_name = models.CharField(max_length=100)
     teacher = models.ForeignKey('Teacher', on_delete=models.CASCADE)
     description = models.TextField()
-    course_information = models.TextField()
 
 course1 = Course(
     course_id="030815",
     course_name="COMP1117",
     teacher=Teacher.objects.get(name="Dr. Loretta Choi"),
     description="Computer Programming",
-    course_information="""Not for students who have passed in ENGG1111 or ENGG1112 or ENGG1330 or IIMT2602, or have already enrolled in these courses
+    #course_information="""Not for students who have passed in ENGG1111 or ENGG1112 or ENGG1330 or IIMT2602, or have already enrolled in these courses
 
 Approved Syllabus
 This is an introductory course in computer programming. Students will acquire basic Python programming skills, including syntax, identifiers, control statements, functions, recursions, strings, lists, dictionaries, tuples and files. Searching and sorting algorithms, such as sequential search, binary search, bubble sort, insertion sort and selection sort, will also be covered.
