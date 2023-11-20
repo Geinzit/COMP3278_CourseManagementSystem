@@ -2,7 +2,35 @@ from django.db import models
 
 from manager.models import Course, Teacher
 
-course1 = Course(course_id="030815", course_name="COMP1117", teacher=Teacher.objects.get(name="Dr. Loretta Choi"), description="Computer Programming")
+class Course(models.Model):
+    course_id = models.CharField(max_length=20)
+    course_name = models.CharField(max_length=100)
+    teacher = models.ForeignKey('Teacher', on_delete=models.CASCADE)
+    description = models.TextField()
+    course_information = models.TextField()
+
+course1 = Course(
+    course_id="030815",
+    course_name="COMP1117",
+    teacher=Teacher.objects.get(name="Dr. Loretta Choi"),
+    description="Computer Programming",
+    course_information="""Not for students who have passed in ENGG1111 or ENGG1112 or ENGG1330 or IIMT2602, or have already enrolled in these courses
+
+Approved Syllabus
+This is an introductory course in computer programming. Students will acquire basic Python programming skills, including syntax, identifiers, control statements, functions, recursions, strings, lists, dictionaries, tuples and files. Searching and sorting algorithms, such as sequential search, binary search, bubble sort, insertion sort and selection sort, will also be covered.
+Mutually exclusive with: ENGG1111 or ENGG1330
+Assessment: 70% continuous assessment, 30% examination
+
+Course Objectives
+By the end of this course students should be able to demonstrate a threshold level of mastery of the following learning outcomes.
+[Computational mind]
+Able to identify possible solutions for problems based on computer programs.
+[Program implementation]
+Able to implement solutions for problems using Python
+[Program comprehension]
+Able to understand programs written by others and participate in larger scale system implementation
+""")
+
 course2 = Course(course_id="030811", course_name="COMP2119", teacher=Teacher.objects.get(name="Dr. H.T.H. Chan"), description="Introduction to data structures and algorithms")
 course3 = Course(course_id="030812", course_name="COMP2120", teacher=Teacher.objects.get(name="Dr. Qi Zhao"), description="Computer organization")
 course4 = Course(course_id="030810", course_name="COMP2121", teacher=Teacher.objects.get(name="Dr. H.T.H. Chan"), description="Discrete mathematics")
