@@ -50,7 +50,9 @@ def course(request, course_id):
     course = Course.objects.get(course_id = course_id)
     course_schedules = CourseSchedule.objects.filter(course = course_id)
     context = {"course":course, "course_schedules":course_schedules}
+
     return render(request, "course.html", context)
+    return render(request, 'course1_information.html', {'course': course})
     
 def teacher(request, teacher_id):
     teacher = Teacher.objects.get(id=teacher_id)
