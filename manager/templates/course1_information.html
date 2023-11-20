@@ -1,0 +1,62 @@
+<!-- templates/course1_information.html -->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ course.course_name }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1, h2 { color: #333; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background-color: #f2f2f2; text-align: left; }
+        .section-title { font-size: 20px; margin-top: 20px; }
+        .highlight { font-weight: bold; font-size: larger; }
+        .course-information { white-space: pre-wrap; /* Preserves white space and line breaks */ }
+    </style>
+</head>
+<body>
+    <h1>Course Information</h1>
+    <h2>{{ course.course_name }}: {{ course.description }}</h2>
+
+    <table>
+        <tr>
+            <th>Faculty</th>
+            <td>Engineering Faculty</td>
+        </tr>
+        <tr>
+            <th>Department</th>
+            <td>{{ course.teacher.department }}</td>
+        </tr>
+        <tr>
+            <th>Course Coordinator</th>
+            <td>{{ course.teacher.name }}</td>
+        </tr>
+        <tr>
+            <th>Credit Value</th>
+            <td>6.00</td>
+        </tr>
+        <tr>
+            <th>Course Grade</th>
+            <td>A+ to F</td>
+        </tr>
+    </table>
+
+    <div class="course-information">
+        <pre id="courseInfo">{{ course.course_information }}</pre>
+    </div>
+
+    <script>
+        // JavaScript to highlight section titles
+        window.onload = function() {
+            var courseInfoText = document.getElementById('courseInfo').innerHTML;
+            courseInfoText = courseInfoText.replace('Prerequisites', '<span class="highlight">Prerequisite(s)</span>');
+            courseInfoText = courseInfoText.replace('Approved Syllabus', '<span class="highlight">Approved Syllabus</span>');
+            courseInfoText = courseInfoText.replace('Course Objectives', '<span class="highlight">Course Objectives</span>');
+            document.getElementById('courseInfo').innerHTML = courseInfoText;
+        };
+    </script>
+</body>
+</html>
+
