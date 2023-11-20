@@ -42,14 +42,14 @@
         </tr>
         <tr>
             <th>Prerequisite(s)/ Corequisite(s)/Impermissible Combination(s)</th>
-            <td>{{ course.course_information|linebreaks }}</td>
+            <td>{{ course.course_information|split:"\n\n"|first }}</td>
         </tr>
     </table>
 
     <div class="section-title">Approved Syllabus</div>
-    <p>{{ course.course_information|linebreaks|slice:"<br>"|first }}</p>
+    <p>{{ course.course_information|split:"\n\n"|slice:"1:2"|join:" " }}</p>
 
     <div class="section-title">Course Objectives</div>
-    <p>{{ course.course_information|linebreaks|slice:"<br>"|last }}</p>
+    <p>{{ course.course_information|split:"\n\n"|last }}</p>
 </body>
 </html>
