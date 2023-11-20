@@ -1,0 +1,75 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<link rel="stylesheet" href="{% static 'schedule.css' %}">
+<title>ICMS Course Timetable</title>
+</head>
+
+<body>
+    <div id="welcomeInfo">
+        <div class="containerBody">
+            <h1>{{student_name}}, Welcome!</h1>
+            <h3>Login time:</h3>
+        </div>
+    </div>
+
+    <div id="reminder">
+        <div class="row">
+            <img class="icon" src="{% static 'img/noClass.webp' %}">
+            <h3>You have no class within one hour</h3>
+        </div>
+    </div>
+
+    <div id="timetable">
+        <h2>Course Schedule</h2>
+        {% for time_range in time_ranges %}
+            <p>{{ time_range }}</p>
+            {% for day in days %}
+                    {% for course in course_schedule.day %}
+                        {% for session in course_schedule.day %}
+                        <p>{{session}}<br></p>
+                    {% endfor %}
+                    {% endfor %}
+            {% endfor %}
+    {% endfor %}
+        <table>
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thur</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                    <th>Sun</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for time_range in time_ranges %}
+                    <tr>
+                        <td>{{ time_range }}</td>
+                        {% for day in days %}
+                            <td>
+                                {% for course in course_schedule.day %}
+                                    {{ course }}<br>
+
+                                    {% if course.start_time <= time_range and time_range < course.end_time %}
+                                        {{ course.name }}<br>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>

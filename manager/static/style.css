@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.banner {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text {
+    width: 100%;
+    padding: 50px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.503);
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.text h1 {
+    font-size: 3rem;
+}
+
+.courseList {
+    width: 100%;
+}
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.course {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.CourseDetails_title {
+    border-bottom: 2px solid #ddd;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.CourseDetails_title svg {
+    background-color: rgb(238, 238, 238);
+    padding: 10px;
+    border-radius: 50%;
+    transform: rotate(180deg);
+    margin-right: 20px;
+}
+
+.CourseDetails {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.CourseDetails_title {
+    display: flex;
+    align-items: center;
+}
+
+.CourseDetails_title svg {
+    margin-right: 10px;
+    fill: #333;
+}
+
+.CourseDetails_title h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.CourseDetails_content {
+    margin-top: 20px;
+}
+
+.CourseDetails_content_item {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    padding-left: 90px;
+
+}
+
+.CourseDetails_content_item h2 {
+    font-size: 18px;
+    /* margin-bottom: 10px; */
+}
+
+.CourseDetails_content_item p {
+    margin: 0;
+    margin-left: 10px;
+}
+
+.CourseDetails_content_item a {
+    text-decoration: underline;
+}
+
+/* Add more styles as needed */

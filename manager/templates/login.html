@@ -1,23 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Login</title>
     <!-- 添加 CSS 样式 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
 </head>
 <body>
-    <h2>Login Page</h2>
-    <form method="post" action="{% url 'login' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        <video id="video" width="640" height="480" autoplay></video>
-        <canvas id="canvas" width="640" height="480" style="display: none;"></canvas><br>
-        <button id="capture">Capture Photo</button>
-        <button id="retake" style="display: none;">Retake Photo</button><br><br>
-        <input id="webimg" name="photo" type="text" style="display: none;">
-        <input type="submit" value="Login">
-    </form>
-
+    <div class="container">
+        <div class="containerBody">
+            <h1>Login Page</h1>
+            <form method="post" action="{% url 'login' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            <div id="faceLogin">
+                <video id="video" width="640" height="480" autoplay></video>
+                <canvas id="canvas" width="640" height="480" style="display: none;"></canvas><br>
+                <div id="buttonRow">
+                    <button id="capture">Capture Photo</button>
+                    <button id="retake" style="display: none;">Retake Photo</button><br><br>
+                    <input id="webimg" name="photo" type="text" style="display: none;">
+                    <input class="buttons" type="submit" value="Login">
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>  
     <script>
         const video = document.getElementById('video');
         const canvas = document.getElementById('canvas');

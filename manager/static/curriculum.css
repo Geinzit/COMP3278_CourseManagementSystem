@@ -1,0 +1,50 @@
+body{
+    margin:auto;
+}
+
+#welcomeInfo {
+    padding: 10px;
+    background-image: url("img/hku_banner.jpeg");
+    height: 80%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.containerBody {
+    background-color: rgba(255, 255, 255, 0.6);
+    min-height: 100%;
+    position: relative;
+    padding: 20px;
+}
+
+#reminder {
+    background-color: #cff536a7;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    padding:10px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.65);
+}
+.icon {
+    height:3.5em;
+}
+
+ul {
+list-style-type: none;
+}
+
+li > div{
+    padding-top: 20px;
+}
+
+#email {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}

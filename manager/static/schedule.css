@@ -1,0 +1,62 @@
+body{
+    margin:auto;
+}
+
+#welcomeInfo {
+    padding: 10px;
+    background-image: url("img/hku_banner.jpeg");
+    height: 80%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.containerBody {
+    background-color: rgba(255, 255, 255, 0.6);
+    min-height: 100%;
+    position: relative;
+    padding: 20px;
+}
+
+#reminder {
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    padding:10px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+.icon {
+    height:3.5em;
+}
+
+#timetable {
+    text-align: center;
+    padding: 20px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+
+td, th {
+    width: 14%;
+    height: 2em;
+    border: 1px solid black;
+    border-spacing: 0px;
+}
+
+.Lecture {
+    background-color: rgba(144, 238, 144, 0.574);
+    border: 2px dashed #00a2ff;
+}
+
+.tutorial {
+    background-color: rgba(240, 218, 128, 0.505);
+    border: 2px dashed rgb(192, 141, 0);
+
+}

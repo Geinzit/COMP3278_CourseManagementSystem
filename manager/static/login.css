@@ -1,0 +1,67 @@
+html {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: url("img/loginBG.jpeg") no-repeat center fixed;
+    width: 100vw;
+    height: 100%;
+    background-size: cover;
+
+}
+
+.container {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    min-height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+}
+.containerBody {
+    width:45%;
+    margin: auto;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+
+h1{
+    padding: 30px;
+    margin-bottom: 0;
+    margin-top: 50px;
+}
+  
+
+#faceLogin {
+    padding: 20px;
+}
+
+#video, #canvas {
+    width: 100%;
+}
+
+#buttonRow {
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    padding:15px;
+}
+
+button, .buttons {
+    height: 30px;
+    width: 30%;
+    background: #4d9f3b;
+    color: white;
+    border: 0;
+}
+
+.buttons:hover { 
+    background-color: darkgreen;
+}

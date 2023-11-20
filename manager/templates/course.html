@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CourseDetails</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="banner">
+        <div class="text">
+            <h1>{{ course.description }}</h1>
+        </div>
+        <img src="{% static 'img\banner.png' %}" alt="">
+    </div>
+    <div class="CourseDetails">
+        <div class="CourseDetails_title">
+            <svg t="1699698942675" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                p-id="4179" width="50" height="50">
+                <path d="M512 187.24L699.501 512 887 836.76H137L324.5 512z" p-id="4180"></path>
+            </svg>
+            <h1>Course Information</h1>
+        </div>
+        <div class="CourseDetails_content">
+            <div class="CourseDetails_content_item">
+                <h2>Course Name</h2>
+                <p>{{ course.course_name }}</p>
+            </div>
+            <div class="CourseDetails_content_item">
+                <h2>Course Id</h2>
+                <p>{{ course.course_id }}</p>
+            </div>
+            <!-- <div class="CourseDetails_content_item">
+                <h2>Course Description</h2>
+                <p>{{ course.description }}</p>
+            </div> 
+            <div class="CourseDetails_content_item">
+                <h2>Course Teacher</h2>
+                <p><a href="/teacher/{{ teacher.id }}">{{ teacher.name }}</a></p>
+            </div>-->
+            <div class="CourseDetails_content_item">
+                <h2>Course Schedule</h2>
+                <div>
+                    {% for schedule in course_schedules %}
+                        <p>StartTime: {{ schedule.start_time }}</p>   
+                        <p>EndTime: {{ schedule.end_time }}</p>
+                    {% empty %}
+                        <p>No course schedules found.</li>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Add enrollment button -->
+            <form action="{% url 'add_course' course.course_id %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Enroll in Course</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

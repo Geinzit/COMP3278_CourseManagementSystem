@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.db.models import Q
 from django.utils import timezone
@@ -12,33 +12,29 @@ from io import BytesIO
 from .models import Student, Teacher, Course, CourseSchedule, Enrollment
 from .face_rec import face_rec, pil_to_cv2
 
-def curriculum(request, student_name):
-    Enrollments = Enrollment.objects.filter(student = student_name)
-    Enrolled_courses = Course.objects.filter(course_id__in = Enrollments)
-    
-    Sessions = CourseSchedule.objects.filter(course__in = Enrolled_courses)
-    Sessions = Events.order_by("start_time")
+def add_course(request, course_id):
+    if request.method == 'POST':
+        student_id = request.user.name  # assuming the student's username is used as the student_id
 
-    # getting the events that will happen in an hour
-    current_time = timezone.now()
-    one_hour_later = current_time + timedelta(hours=1)
+        # Get the student and course objects
+        student = get_object_or_404(Student, name=student_id)
+        course = get_object_or_404(Course, course_id=course_id)
 
-    current_weekday = current_time.weekday()
-    next_weekday = (current_weekday + 1) % 7
+        # Check if the enrollment already exists
+        if Enrollment.objects.filter(course=course, student=student).exists():
+            return HttpResponse("You are already enrolled in this course.")
 
-    SessionIn1H = Events.filter(Q(weekday=current_weekday, start_time__range = (current_time.time(), one_hour_later.time())) | Q(weekday=next_weekday, start_time__lte=one_hour_later.time()))
+        # Create a new enrollment object
+        enrollment = Enrollment(course=course, student=student)
+        enrollment.save()
 
-    
-    context = {"enrolled_classes": Enrolled_courses, "sessions": Events, "sessions1h": EventsIn1H}
-    return render(request, "curriculum.html", context)
-    
-#def add_course(request):
-   # if request.method == "POST":
+        return redirect('/manager')  # Redirect to the curriculum page after enrollment
 
 def index(request):
     now = timezone.now()
     courses = Course.objects.all()
-    
+    schedule = CourseSchedule.objects.all()
+    processed_courses = []
     for course in courses:
         course_schedules = schedule.filter(course=course)
         for course_schedule in course_schedules:
@@ -52,7 +48,7 @@ def index(request):
    
 def course(request, course_id):
     course = Course.objects.get(course_id = course_id)
-    course_schedules = CourseSchedule.objects.get(course = course_id)
+    course_schedules = CourseSchedule.objects.filter(course = course_id)
     context = {"course":course, "course_schedules":course_schedules}
     return render(request, "course.html", context)
     
@@ -100,4 +96,44 @@ def curriculum(request):
         return HttpResponse("Invalid or missing student ID", status=400)
 
     # 如果验证成功，继续处理
-    return HttpResponse(f"Curriculum for student ID: {student_id}")
+    Enrollments = Enrollment.objects.filter(student = student_id)
+    Enrolled_courses = Course.objects.filter(course_id__in = Enrollments)
+    
+    Sessions = CourseSchedule.objects.filter(course__in = Enrolled_courses)
+    Sessions = Sessions.order_by("start_time")
+
+    # getting the events that will happen in an hour
+    current_time = timezone.now()
+    one_hour_later = current_time + timedelta(hours=1)
+
+    current_weekday = current_time.weekday()
+    next_weekday = (current_weekday + 1) % 7
+
+    SessionIn1H = Sessions.filter(Q(weekday=current_weekday, start_time__range = (current_time.time(), one_hour_later.time())) | Q(weekday=next_weekday, start_time__lte=one_hour_later.time()))
+    student_name=Student.objects.get(name=student_id).usrname
+    
+    if SessionIn1H.exists():
+        context = {"student_name": student_name, "sessions1h": SessionIn1H}
+        return render(request, "curriculum.html", context)
+    else:
+        course_schedule = {}
+        time_ranges = ['9:30-10:20', '10:30-11:20', '11:30-12:20', '12:30-13:20', '13:30-14:20','13:30-14:20','14:30-15:20','15:30-16:20','16:30-17:20','17:30-18:20','18:30-19:20']
+        days = [0,1,2,3,4,5,6]
+
+        for course in Sessions:
+            # Assuming the course has fields 'start_time' and 'end_time' representing the course duration
+            start_time = course.start_time
+            end_time = course.end_time
+
+            day = course.weekday
+
+            # Create a list to store the time range for each day
+            if day not in course_schedule:
+                course_schedule[day] = []
+
+            # Add the course name and time range to the corresponding day
+            course_schedule[day].append((start_time, end_time))
+
+        context = {"student_name": student_name,'course_schedule': course_schedule,'time_ranges': time_ranges, 'days': days}
+        return render(request, "schedule.html",context)
+    #return HttpResponse(f"Curriculum for student ID: {student_id}")

@@ -1,0 +1,72 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<link rel="stylesheet" href="{% static 'curriculum.css' %}">
+<title>ICMS Upcoming Course</title>
+</head>
+
+<body>
+    <div id="welcomeInfo">
+        <div class="containerBody">
+            <h1>{{student_name}}, Welcome!</h1>
+            <h3>Login time:</h3>
+        </div>
+    </div>
+
+    <div id="upcomingCourse">
+        <div id="reminder">
+            <div class="row">
+                <img class="icon" src="{% static 'img/reminder.png' %}">
+                <h3>You have class within one hour!</h3>
+            </div>
+            <p>Time: {{sessions1h.start_time}} </p>
+            <p>Classroom address: </p>
+        </div>
+        <ul>
+            <li>
+                <div id="courseInfo">
+                    <h3>Course Information</h3>
+                        <p>Course Name: {{sessions1h.course.course_name}}</p>
+                        <p>Course ID: {{sessions1h.course.course_id}} </p>
+                        <p>Course Teacher: <a href="teacher/{{sessions1h.course.teacher.id}}/"> {{sessions1h.course.teacher.name}} </a> </p>
+                </div>
+            </li>
+
+            <li>
+                <div id="teacherMsg">
+                    <h3>Teacher's Message</h3>
+                    <p>{{sessions1h.course.teacher.bio}}</p>
+                    {% for course in enrolled_classes %}
+                        <p>Course name: {{course.course_name}} </p>
+                    {% endfor %}
+                </div>
+            </li>
+
+            <li>
+                <div id="zoom">
+                    <h3>Zoom Links</h3>
+                    <a href="https://hku.zoom.us/j/98307568693?pwd=QmlqZERWeDdWRVZ3SGdqWG51YUtndz09">Join Zoom Meeting</a>
+                </div>
+            </li>
+
+            <li>
+                <div id="materials">
+                    <h3>Course Materials</h3>
+                    <ul>
+                        <li><a href="{% static 'materials/Lectur_0.pdf' %}">Course Intrduction</a></li>
+                        <li><a href="{% static 'materials/Lectur_1.pdf' %}">Lecture 1</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+
+        <div id="email">
+            <input class="buttons" type="submit" value="Send to my email">
+        </div>
+    </div>
+
+</body>
+</html>

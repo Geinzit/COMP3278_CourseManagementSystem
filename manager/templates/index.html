@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>courseList</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="banner">
+        <div class="text">
+            <h1>CourseList</h1>
+        </div>
+        <img src="{% static 'img/banner.png' %}" alt="">
+    </div>
+    <div class="courseList">
+        <table>
+            <thead>
+                <tr>
+                    <th> CourseId</th>
+                    <th>CourseName</th>
+                    <th>StartTime</th>
+                    <th>EndTime</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in course_list %}
+                <tr>
+                    <td>{{ course.course_id }}</td>
+                    <td>{{ course.course_name }}</td>
+                    <td>{{ course.start_time }}</td>
+                    <td>{{ course.end_time }}</td>
+                    <td><a href="course/{{ course.course_id }}">Check</a></td>
+                </tr>
+                {% endfor %}
+
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
