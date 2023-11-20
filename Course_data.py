@@ -88,7 +88,8 @@ Assessment: 50% continuous assessment, 50% examination
 
 Course Objectives
 The primary goal of this course is to introduce those mathematical topics whose understanding is essential to computer studies and to develop mathematical maturity in reasoning and analysis. 
-By the end of this course, students are expected to have a solid foundation in discrete mathematics and an ability to apply this knowledge to computer science topics, including logic, set theory, mathematical reasoning, counting techniques, discrete probability, and the analysis of algorithms."""
+By the end of this course, students are expected to have a solid foundation in discrete mathematics and an ability to apply this knowledge to computer science topics.
+Including logic, set theory, mathematical reasoning, counting techniques, discrete probability, and the analysis of algorithms."""
 )
 
 course5 = Course(
@@ -120,7 +121,8 @@ course6 = Course(
 Approved Syllabus
 This course covers intermediate to advanced computer programming topics focusing on various technologies and tools essential for software development. 
 Topics include Linux shell commands, shell scripts, C/C++ programming, separate compilation techniques, and version control. 
-As a self-learning course, there will be no lectures, and students will be provided with self-study materials. Milestone-based self-assessment tasks are required throughout the course. This course is designed for students with an interest in Computer Science/Computer Engineering.
+As a self-learning course, there will be no lectures, and students will be provided with self-study materials. Milestone-based self-assessment tasks are required throughout the course. 
+This course is designed for students with an interest in Computer Science/Computer Engineering.
 Assessment: Written examination (30%), Continuous assessment (70%)
 
 Course Objectives
@@ -167,7 +169,8 @@ Assessment: 50% continuous assessment, 50% examination
 
 Course Objectives
 The course aims to present the fundamentals of operating systems and study the detailed operation and principles behind the design of various components of an operating system. 
-Topics covered include operating system structures, processes and threads, CPU scheduling, process synchronization, deadlocks, memory management, file systems, I/O systems and device drivers, mass-storage structure and disk scheduling, along with relevant case studies."""
+Topics covered include operating system structures, processes and threads, CPU scheduling, process synchronization, deadlocks, memory management, file systems;
+I/O systems and device drivers, mass-storage structure and disk scheduling, along with relevant case studies."""
 )
 
 course9 = Course(
@@ -178,8 +181,10 @@ course9 = Course(
     course_information="""Prerequisites: Pass in COMP2120
 
 Approved Syllabus
-This course provides an introduction to the computer design process, including performance and cost analysis, instruction set design, data-path and controller design, pipelining, memory system, I/O design, GPU architecture and programming, and introduction to advanced topics. 
-The course serves as a continuation of basic concepts in machine organization, with a focus on architecture – interconnecting and integrating hardware components to form useful systems. Examples are drawn from both conventional and advanced architectures.
+This course provides an introduction to the computer design process, including performance and cost analysis, instruction set design, data-path and controller design, pipelining;
+Memory system, I/O design, GPU architecture and programming, and introduction to advanced topics. 
+The course serves as a continuation of basic concepts in machine organization, with a focus on architecture – interconnecting and integrating hardware components to form useful systems. 
+Examples are drawn from both conventional and advanced architectures.
 Assessment: 40% continuous assessment, 60% examination
 
 Course Objectives
@@ -197,7 +202,8 @@ course10 = Course(
     course_information="""Prerequisites: Pass in ENGG1340 or COMP2113 or COMP2123 or ELEC2543; and COMP2120 or ELEC2441; Mutually exclusive with: ELEC3443
 
 Approved Syllabus
-The course covers network structure and architecture, reference models, protocols like stop and wait, sliding window, character and bit-oriented protocols, virtual circuits and datagrams, routing, flow control, congestion control, local area networks, network interconnection principles, transport protocols, application layer, and examples of network protocols.
+The course covers network structure and architecture, reference models, protocols like stop and wait, sliding window, character and bit-oriented protocols, virtual circuits and datagrams;
+Routing, flow control, congestion control, local area networks, network interconnection principles, transport protocols, application layer, and examples of network protocols.
 Assessment: 50% continuous assessment, 50% examination
 
 Course Objectives
@@ -218,7 +224,9 @@ course11 = Course(
     course_information="""Prerequisites: Pass in COMP2119; Mutually exclusive with: COMP3250 or COMP3252
 
 Approved Syllabus
-The course introduces various algorithm design techniques, including divide and conquer, greedy, and dynamic programming. It covers selected topics in graph algorithms and provides an insight into designing better algorithms for various areas of computer science. Additionally, the course offers an overview of NP-complete problems and their significance in the field of algorithm design.
+The course introduces various algorithm design techniques, including divide and conquer, greedy, and dynamic programming. 
+It covers selected topics in graph algorithms and provides an insight into designing better algorithms for various areas of computer science. 
+Additionally, the course offers an overview of NP-complete problems and their significance in the field of algorithm design.
 
 Course Objectives
 By the end of this course, students will:
@@ -236,7 +244,10 @@ course12 = Course(
     course_information="""Prerequisites: Pass in COMP2121
 
 Approved Syllabus
-This course introduces the basics of functional programming using Haskell. Key concepts include recursion, abstraction, lambda expressions, higher-order functions, and data types. It also covers the mathematical reasoning in functional program design and techniques for proving properties about functions. The course highlights the relevance of functional programming in modern programming languages like Java, C++, and C#. It is crucial for students to learn these techniques to stay updated with the evolving programming paradigms.
+This course introduces the basics of functional programming using Haskell. Key concepts include recursion, abstraction, lambda expressions, higher-order functions, and data types. 
+It also covers the mathematical reasoning in functional program design and techniques for proving properties about functions. 
+The course highlights the relevance of functional programming in modern programming languages like Java, C++, and C#. 
+It is crucial for students to learn these techniques to stay updated with the evolving programming paradigms.
 Assessment: 50% continuous assessment, 50% examination
 
 Course Objectives
@@ -255,12 +266,14 @@ course13 = Course(
     course_information = """Prerequisites: Pass in COMP2119 or FITE2000
 
 Approved Syllabus
-Syntax and semantics specification; data types; data control and memory management; expressions, precedence and associativity of operators; control structures; comparative study of existing programming languages; advanced topics such as polymorphism, programming paradigms, exception handling and concurrency.
+Syntax and semantics specification; data types; data control and memory management; expressions, precedence and associativity of operators; control structures;
+Advanced topics such as polymorphism, programming paradigms, exception handling and concurrency.
 Assessment: 40% continuous assessment, 60% examination
 
 Course Objectives
 To study the design, specification and implementation of programming languages.
-Syntax and semantics specification; data types; data control and memory management; expressions, precedence and associativity of operators; control structures; comparative study of existing programming languages; advanced topics such as polymorphism, programming paradigms, exception handling and concurrency.
+Syntax and semantics specification; data types; data control and memory management; expressions, precedence and associativity of operators; 
+Control structures; comparative study of existing programming languages; advanced topics such as polymorphism, programming paradigms, exception handling and concurrency.
 On successful completion of the course, students should be able to:
 [Programming languages fundamentals] Be able to understand the fundamental principles underlying various programming languages features
 [Programming language implementation] Be able to understand the basic algorithms in implementing simple programming languages
@@ -275,11 +288,14 @@ course14 = Course(
     course_information = """Prerequisites: Pass in COMP2119 or FITE2000; Mutually exclusive with: IIMT3688 or ELEC4544
 
 Approved Syllabus
-This is an introduction course on the subject of artificial intelligence. Topics include: intelligent agents; search techniques for problem solving; knowledge representation; logical inference; reasoning under uncertainty; statistical models and machine learning.
+This is an introduction course on the subject of artificial intelligence. 
+Topics include: intelligent agents; search techniques for problem solving; knowledge representation; logical inference; reasoning under uncertainty; statistical models and machine learning.
 Assessment: 50% continuous assessment, 50% examination
 
 Course Objectives
-This is an introduction course on the subject of artificial intelligence. Topics include: intelligent agents; search techniques for problem solving; knowledge representation; logical inference; reasoning under uncertainty; statistical models and machine learning. This course may not be taken with BUSI0088.
+This is an introduction course on the subject of artificial intelligence. 
+Topics include: intelligent agents; search techniques for problem solving; knowledge representation; logical inference; reasoning under uncertainty; statistical models and machine learning. 
+This course may not be taken with BUSI0088.
 On successful completion of the course, students should be able to:
 [1] understand the basic principles and technologies of intelligent computer systems
 [2] explain the algorithms to achieve AI
@@ -294,11 +310,13 @@ course15 = Course(
     course_information = """Prerequisites: Pass in COMP2119 or ELEC2543 or COMP2502 or FITE2000; Mutually exclusive with: IIMT3601
 
 Approved Syllabus
-This course studies the principles, design, administration, and implementation of database management systems.  Topics include: entity-relationship model, relational model, relational algebra, database design and normalization, database query languages, indexing schemes, integrity and concurrency control.
+This course studies the principles, design, administration, and implementation of database management systems.  
+Topics include: entity-relationship model, relational model, relational algebra, database design and normalization, database query languages, indexing schemes, integrity and concurrency control.
 Assessment: 50% continuous assessment, 50% examination
 
 Course Objectives
-This course studies the principles, design, administration, and implementation of database management systems. Topics include: entity-relationship model, relational model, relational algebra, database design and normalization, database query languages, indexing schemes, integrity and concurrency control.
+This course studies the principles, design, administration, and implementation of database management systems. 
+Topics include: entity-relationship model, relational model, relational algebra, database design and normalization, database query languages, indexing schemes, integrity and concurrency control.
 On successful completion of the course, students should be able to:
 [Information Modeling] Able to understand the modeling of real-life information in a database system.
 [Query Languages] Able to understand and use the languages designed for data access.
@@ -314,11 +332,12 @@ course16 = Course(
     course_information = """Prerequisites: Pass in MATH1853 or MATH2014; and COMP2119 or ELEC2543 or FITE2000
 
 Approved Syllabus
-This course introduces algorithms, tools, practices, and applications of machine learning. Topics include core methods such as supervised learning (classification and regression), unsupervised learning (clustering, principal component analysis), Bayesian estimation, neural networks; common practices in data pre-processing, hyper-parameter tuning, and model evaluation; tools/libraries/APIs such as scikit-learn, Theano/Keras, and multi/many-core CPU/GPU programming.
+This course introduces algorithms, tools, practices, and applications of machine learning. 
+Topics include core methods such as supervised learning (classification and regression), unsupervised learning (clustering, principal component analysis), Bayesian estimation, neural networks; 
+Common practices in data pre-processing, hyper-parameter tuning, and model evaluation; tools/libraries/APIs such as scikit-learn, Theano/Keras, and multi/many-core CPU/GPU programming.
 Assessment: 50% continuous assessment, 50% examination
 
 Course Objectives
-This course introduces algorithms, tools, practices, and applications of machine learning. Topics include core methods such as supervised learning (classification and regression), unsupervised learning (clustering, principal component analysis), Bayesian estimation, neural networks; common practices in data pre-processing, hyper-parameter tuning, and model evaluation; tools/libraries/APIs such as scikit-learn, Theano/Keras, and multi/many-core CPU/GPU programming.
 On successful completion of the course, students should be able to:
 [1] understand the motivations and principles for building adaptive systems based on empirical data, and how machine learning relates to the broader field of artificial intelligence
 [2] formulate problems associated with domain specific data (e.g., image classification, document clustering) in terms of abstract models of machine learning
@@ -333,12 +352,15 @@ course17 = Course(
     course_information = """Prerequisites: Pass in MATH1853 or MATH2014 or MATH2101 or equivalent (e.g. PHYS2155)
 
 Approved Syllabus
-This course offers an introduction to the interdisciplinary field of quantum information and computation. We will start from the basic rules of quantum theory and become familiar with the counterintuitive notions of quantum superposition and entanglement. In particular, we will see how quantum systems could be used to detect an object without directly interacting with it (Elitzur-Vaidman bomb tester), to increase the amount of bits that can be sent through a transmission line (dense coding), and to increase the chance to win certain games (CHSH game and GHZ game). Once the basics have been covered, we will provide an overview of quantum computation and of major quantum algorithms such as Grover's search algorithm and Shor's factoring algorithm for prime factorization. Finally, we will introduce the upgraded framework of quantum theory, and use it to explore applications to quantum error correction, quantum state discrimination, quantum cryptography, and quantum teleportation.
+This course offers an introduction to the interdisciplinary field of quantum information and computation. 
+We will start from the basic rules of quantum theory and become familiar with the counterintuitive notions of quantum superposition and entanglement. 
+In particular, we will see how quantum systems could be used to detect an object without directly interacting with it (Elitzur-Vaidman bomb tester);
+To increase the amount of bits that can be sent through a transmission line (dense coding), and to increase the chance to win certain games (CHSH game and GHZ game). 
+Once the basics have been covered, we will provide an overview of quantum computation and of major quantum algorithms such as Grover's search algorithm and Shor's factoring algorithm for prime factorization. 
+Finally, we will introduce the upgraded framework of quantum theory, and use it to explore applications to quantum error correction, quantum state discrimination, quantum cryptography, and quantum teleportation.
 Assessment: 50% continuous assignment, 50% examination
 
 Course Objectives
-This course offers an introduction to the interdisciplinary field of quantum information and computation. We will start from the basic rules of quantum theory and become familiar with the counterintuitive notions of quantum superposition and entanglement. In particular, we will see how quantum systems could be used to detect an object without directly interacting with it (Elitzur-Vaidman bomb tester), to increase the amount of bits that can be sent through a transmission line (dense coding), and to increase the chance to win certain games (CHSH game and GHZ game). Once the basics have been covered, we will provide an overview of quantum computation and of major quantum algorithms such as Grover's search algorithm and Shor's factoring algorithm for prime factorization. Finally, we will introduce the upgraded framework of quantum theory, and use it to explore applications to quantum error correction, quantum state discrimination, quantum cryptography, and quantum teleportation. 
-On successful completion of the course, students should be able to:
 [Basic Working knowledge]
 Able to use the basic rules of quantum theory: states, measurements, gates, composite systems.
 [Modeling] Able to model basic information-theoretic tasks in the quantum domain: quantum communication, quantum games, quantum computation.
@@ -354,11 +376,13 @@ course18 = Course(
     course_information = """Prerequisites: Pass in COMP1117 or ENGG1330; Mutually exclusive with: IIMT3663
 
 Approved Syllabus
-Selected network protocols relevant to the World Wide Web (e.g., HTTP, DNS, IP); World Wide Web; technologies for programming the Web (e.g, HTML, XML, style sheets, PHP, JavaScript, Node.js.; other topics of current interest (AJAX, HTML5, web services, cloud computing).
+Selected network protocols relevant to the World Wide Web (e.g., HTTP, DNS, IP); 
+World Wide Web; technologies for programming the Web (e.g, HTML, XML, style sheets, PHP, JavaScript, Node.js.; 
+Other topics of current interest (AJAX, HTML5, web services, cloud computing).
 Assessment: 60% continuous assessment, 40% examination
 
 Course Objectives
-Selected network protocols relevant to the World Wide Web (e.g., HTTP, DNS, IP); World Wide Web; technologies for programming the Web (e.g, HTML, style sheets, PHP, JavaScript, Node.js.; other topics of current interest (AJAX, HTML5, web services, cloud computing).
+
 On successful completion of the course, students should be able to:
 [Web technologies]
 Able to master the key technologies about the World Wide Web and be able to contrast similar technologies.
@@ -374,13 +398,15 @@ course19 = Course(
     course_information = """Prerequisites: Pass in COMP3278; Mutually exclusive with: FITE3010
 
 Approved Syllabus
-The course will study some advanced topics and techniques in database systems, with a focus on the system and algorithmic aspects.  It will also survey the recent development and progress in selected areas.  Topics include: query optimization, spatial-spatiotemporal data management, multimedia and time-series data management, information retrieval and XML, data mining.
+The course will study some advanced topics and techniques in database systems, with a focus on the system and algorithmic aspects.  
+It will also survey the recent development and progress in selected areas.  
+Topics include: query optimization, spatial-spatiotemporal data management, multimedia and time-series data management, information retrieval and XML, data mining.
 Assessment: 50% continuous assessment, 50% examination
 
 Course Objectives
-The course will study some advanced topics and techniques in database systems, with a focus on the system and algorithmic aspects. It will also survey the recent development and progress in selected areas. Topics include: query optimization, spatial-spatiotemporal data management, multimedia and time-series data management, information retrieval and XML, data mining.
 On successful completion of the course, students should be able to:
-[Advanced Topics in Databases] Able to understand the background and knowledge of some advanced topics in database that have become key techniques in modern database theory and practices; typical topics are distributed concurrency control, database recovery, query optimization, spatial databases.
+[Advanced Topics in Databases] Able to understand the background and knowledge of some advanced topics in database that have become key techniques in modern database theory and practices; 
+  Typical topics are distributed concurrency control, database recovery, query optimization, spatial databases.
 [Recent Development in Database Research] Able to understand the background and knowledge of some contemporary topics in database research; typical topics are data mining, uncertain data management, XML data.
 [Recent Development in Information Management] Able to understand the background and knowledge of some contemporary topics in information management, typical topics are cloud computing, web information management, social network technology.
 [Application Development] Able to implement some practical application modules based on selected advanced database techniques. """
@@ -396,7 +422,9 @@ course20 = Course(
 
 Approved Syllabus
 To study the principles and practice of computer game design.
-This course introduces the concepts and techniques for computer game design and development. Topics include: game history and genres, game design process, game engine, audio and visual design, 2D and 3D graphics, physics, optimization, camera, network, artificial intelligence and user interface design. Students participate in group projects to gain hands-on experience in using common game engine in the market.
+This course introduces the concepts and techniques for computer game design and development. 
+Topics include: game history and genres, game design process, game engine, audio and visual design, 2D and 3D graphics, physics, optimization, camera, network, artificial intelligence and user interface design. 
+Students participate in group projects to gain hands-on experience in using common game engine in the market.
 Assessment: 50% continuous assessment, 50% examination
 
 Course Objectives
