@@ -11,7 +11,9 @@ course1 = Course(
     course_information="""Prerequisites: Not for students who have passed in ENGG1111 or ENGG1112 or ENGG1330 or IIMT2602, or have already enrolled in these courses
 
 Approved Syllabus
-This is an introductory course in computer programming. Students will acquire basic Python programming skills, including syntax, identifiers, control statements, functions, recursions, strings, lists, dictionaries, tuples and files. Searching and sorting algorithms, such as sequential search, binary search, bubble sort, insertion sort and selection sort, will also be covered.
+This is an introductory course in computer programming. 
+Students will acquire basic Python programming skills, including syntax, identifiers, control statements, functions, recursions, strings, lists;
+Dictionaries, tuples and files. Searching and sorting algorithms, such as sequential search, binary search, bubble sort, insertion sort and selection sort will also be covered.
 Mutually exclusive with: ENGG1111 or ENGG1330
 Assessment: 70% continuous assessment, 30% examination
 
@@ -35,7 +37,10 @@ course2 = Course(
     course_information="""Prerequisites: Pass in ENGG1340 or COMP2113 or COMP2123
 
 Approved Syllabus
-To study data structures and algorithms in the broader context of solving problems using computers. The course includes topics such as arrays, linked lists, trees, and graphs; stacks and queues; symbol tables; priority queues, balanced trees; sorting algorithms; and complexity analysis. The course aims to provide a comprehensive understanding of these fundamental concepts and their applications in computer science.
+To study data structures and algorithms in the broader context of solving problems using computers. 
+The course includes topics such as arrays, linked lists, trees, and graphs; stacks and queues; symbol tables; 
+Priority queues, balanced trees; sorting algorithms; and complexity analysis. 
+The course aims to provide a comprehensive understanding of these fundamental concepts and their applications in computer science.
 Assessment: 40% continuous assessment, 60% examination
 
 Course Objectives
@@ -54,12 +59,17 @@ course3 = Course(
     course_information="""Prerequisites: Pass in COMP1117 or ENGG1330, or already enrolled in these courses; Mutually exclusive with: ELEC2441
 
 Approved Syllabus
-Introduction to computer organization and architecture; data representations; instruction sets; machine and assembly languages; basic logic design and integrated devices; the central processing unit (CPU) and its control; memory and caches; I/O and storage systems; computer arithmetic. This course aims to provide a comprehensive understanding of the hardware organization of computers and how they operate at a fundamental level. Students will gain insights into the detailed operations of computers, particularly through assembly language programming.
+Introduction to computer organization and architecture; data representations; instruction sets; 
+Machine and assembly languages; basic logic design and integrated devices; the central processing unit (CPU) and its control; 
+Memory and caches; I/O and storage systems; computer arithmetic. 
+This course aims to provide a comprehensive understanding of the hardware organization of computers and how they operate at a fundamental level. 
+Students will gain insights into the detailed operations of computers, particularly through assembly language programming.
 Assessment: 50% continuous assessment, 50% examination
 
 Course Objectives
 To introduce the hardware organization of computers and detailed operations of computers through assembly language programming. 
-The course will cover topics such as computer organization and architecture, data representations, instruction sets, machine and assembly languages, basic logic design and integrated devices, CPU and its control, memory and caches, I/O and storage systems, and computer arithmetic. 
+The course will cover topics such as computer organization and architecture, data representations, instruction sets, machine and assembly languages;
+Basic logic design and integrated devices, CPU and its control, memory and caches, I/O and storage systems, and computer arithmetic. 
 By the end of this course, students will have a solid understanding of how computer systems are organized and operate at a hardware level."""
 )
 
