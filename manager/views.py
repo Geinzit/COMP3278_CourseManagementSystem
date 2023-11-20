@@ -36,11 +36,16 @@ def index(request):
     schedule = CourseSchedule.objects.all()
     processed_courses = []
     for course in courses:
+        print(course)
         course_schedules = schedule.filter(course=course)
         for course_schedule in course_schedules:
+            print(course.course_name, course_schedule.weekday, course_schedule.start_time, course_schedule.end_time)
             processed_courses.append({
                 'course_id': course.course_id,
                 'course_name': course.course_name,
+                'weekday': course_schedule.get_weekday_display(),
+                'start_time': course_schedule.start_time,
+                'end_time': course_schedule.end_time,
                 'teacher': course.teacher,
                 'description': course.description,
             })
@@ -70,6 +75,8 @@ def login_page(request):
 
         # 打印用户名和识别出的学生名字
         print(f"Username: {username}, Recognized as: {student_name}")
+
+        # database check required here
 
         return redirect(f'/manager/curriculum/?student_id={student_name}')
 

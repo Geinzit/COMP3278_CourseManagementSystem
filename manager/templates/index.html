@@ -22,7 +22,8 @@
                 <tr>
                     <th> CourseId</th>
                     <th>CourseName</th>
-                    <th>StartTime</th>
+		    <th>weekday</th>
+		    <th>StartTime</th>
                     <th>EndTime</th>
                     <th>Operation</th>
                 </tr>
@@ -32,6 +33,7 @@
                 <tr>
                     <td>{{ course.course_id }}</td>
                     <td>{{ course.course_name }}</td>
+		    <td>{{ course.weekday }}</td>
                     <td>{{ course.start_time }}</td>
                     <td>{{ course.end_time }}</td>
                     <td><a href="course/{{ course.course_id }}">Check</a></td>

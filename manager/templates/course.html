@@ -44,7 +44,8 @@
             <div class="CourseDetails_content_item">
                 <h2>Course Schedule</h2>
                 <div>
-                    {% for schedule in course_schedules %}
+                  {% for schedule in course_schedules %}
+		        <p>{{ schedule.get_weekday_display }}</p>
                         <p>StartTime: {{ schedule.start_time }}</p>   
                         <p>EndTime: {{ schedule.end_time }}</p>
                     {% empty %}

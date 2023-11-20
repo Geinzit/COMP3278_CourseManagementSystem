@@ -1,10 +1,14 @@
 from django.utils import timezone
-import datetime
+from datetime import datetime
 
 from manager.models import Course, CourseSchedule
 
 
 # Helper function to convert weekday and time to a datetime object for the current week
+weekdays = {
+    'Mon': 0, 'Tue': 1, 'Wed': 2, 'Thu': 3, 'Fri': 4, 'Sat': 5, 'Sun': 6
+}
+"""
 def get_weekday_datetime(weekday_str, time_str):
     weekdays = {
         'Mon': 0, 'Tue': 1, 'Wed': 2, 'Thu': 3, 'Fri': 4, 'Sat': 5, 'Sun': 6
@@ -21,7 +25,7 @@ def get_weekday_datetime(weekday_str, time_str):
     target_datetime = timezone.make_aware(datetime.datetime.combine(target_weekday, time_obj))
     
     return target_datetime
-
+"""
 # Course schedule data
 schedule_data = {
     "030810": [("Mon", "13:30", "15:20"), ("Thu", "18:30", "20:20")],
@@ -54,26 +58,29 @@ schedule_data = {
 def get_schedule_data():
     # Iterating through schedule data
     for course_id, times in schedule_data.items():
-        # Filter CourseSchedule instances by course_id
-        course_schedules = CourseSchedule.objects.filter(course__course_id=course_id)
-
         # If CourseSchedules exist, update the times; otherwise, create new ones
+        """
         if course_schedules.exists():
             for course_schedule in course_schedules:
                 for weekday, start, end in times:
-                    start_time = get_weekday_datetime(weekday, start)
-                    end_time = get_weekday_datetime(weekday, end)
                     # Update the existing CourseSchedule
+                    start_time = datetime.strptime(start, "%H:%M").time()
+                    end_time = datetime.strptime(end, "%H:%M").time()
+                    course_schedule.weekday = weekdays[weekday]
                     course_schedule.start_time = start_time
                     course_schedule.end_time = end_time
                     course_schedule.save()
         else:
+        """
             # CourseSchedules don't exist, create new ones
-            course = Course.objects.get(course_id=course_id)
-            for weekday, start, end in times:
-                start_time = get_weekday_datetime(weekday, start)
-                end_time = get_weekday_datetime(weekday, end)
-                new_course_schedule = CourseSchedule(course=course, start_time=start_time, end_time=end_time)
-                new_course_schedule.save()
+            # print(course_id)
+        course = Course.objects.get(course_id=course_id)
+        for weekday, start, end in times:
+            start_time = datetime.strptime(start, "%H:%M").time()
+            end_time = datetime.strptime(end, "%H:%M").time()
+            new_course_schedule = CourseSchedule(course=course, weekday=weekdays[weekday], start_time=start, end_time=end)
+            new_course_schedule.save()
 
+CourseSchedule.objects.all().delete()
+get_schedule_data()
 
