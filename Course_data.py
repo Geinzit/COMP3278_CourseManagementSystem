@@ -8,7 +8,7 @@ course1 = Course(
     course_name="COMP1117",
     teacher=Teacher.objects.get(name="Dr. Loretta Choi"),
     description="Computer Programming",
-    course_information="""Not for students who have passed in ENGG1111 or ENGG1112 or ENGG1330 or IIMT2602, or have already enrolled in these courses
+    course_information="""Prerequisites: Not for students who have passed in ENGG1111 or ENGG1112 or ENGG1330 or IIMT2602, or have already enrolled in these courses
 
 Approved Syllabus
 This is an introductory course in computer programming. Students will acquire basic Python programming skills, including syntax, identifiers, control statements, functions, recursions, strings, lists, dictionaries, tuples and files. Searching and sorting algorithms, such as sequential search, binary search, bubble sort, insertion sort and selection sort, will also be covered.
@@ -68,7 +68,7 @@ course4 = Course(
     course_name="COMP2121",
     teacher=Teacher.objects.get(name="Dr. H.T.H. Chan"),
     description="Discrete mathematics",
-    course_information="""Mutually exclusive with: MATH3600
+    course_information="""Prerequisites: Mutually exclusive with: MATH3600
 
 Approved Syllabus
 This course provides students a solid background in discrete mathematics and structures pertinent to computer science. 
@@ -242,7 +242,7 @@ course13 = Course(
     course_name="COMP3259", 
     teacher=Teacher.objects.get(name="Dr. B. Oliveira"), 
     description="Principles of programming languages",
-    course_information = """Pass in COMP2119 or FITE2000
+    course_information = """Prerequisites: Pass in COMP2119 or FITE2000
 
 Approved Syllabus
 Syntax and semantics specification; data types; data control and memory management; expressions, precedence and associativity of operators; control structures; comparative study of existing programming languages; advanced topics such as polymorphism, programming paradigms, exception handling and concurrency.
@@ -262,7 +262,7 @@ course14 = Course(
     course_name="COMP3270", 
     teacher=Teacher.objects.get(name="Dr. D. Schnieders"), 
     description="Artificial intelligence",
-    course_information = """Pass in COMP2119 or FITE2000; Mutually exclusive with: IIMT3688 or ELEC4544
+    course_information = """Prerequisites: Pass in COMP2119 or FITE2000; Mutually exclusive with: IIMT3688 or ELEC4544
 
 Approved Syllabus
 This is an introduction course on the subject of artificial intelligence. Topics include: intelligent agents; search techniques for problem solving; knowledge representation; logical inference; reasoning under uncertainty; statistical models and machine learning.
@@ -281,7 +281,7 @@ course15 = Course(
     course_name="COMP3278", 
     teacher=Teacher.objects.get(name="Dr. C.K. Chui"), 
     description="Introduction to database management systems",
-    course_information = """Pass in COMP2119 or ELEC2543 or COMP2502 or FITE2000; Mutually exclusive with: IIMT3601
+    course_information = """Prerequisites: Pass in COMP2119 or ELEC2543 or COMP2502 or FITE2000; Mutually exclusive with: IIMT3601
 
 Approved Syllabus
 This course studies the principles, design, administration, and implementation of database management systems.  Topics include: entity-relationship model, relational model, relational algebra, database design and normalization, database query languages, indexing schemes, integrity and concurrency control.
@@ -301,7 +301,7 @@ course16 = Course(
     course_name="COMP3314",
     teacher=Teacher.objects.get(name="Dr. Hengshuang Zhao"),
     description="Machine learning",
-    course_information = """Pass in MATH1853 or MATH2014; and COMP2119 or ELEC2543 or FITE2000
+    course_information = """Prerequisites: Pass in MATH1853 or MATH2014; and COMP2119 or ELEC2543 or FITE2000
 
 Approved Syllabus
 This course introduces algorithms, tools, practices, and applications of machine learning. Topics include core methods such as supervised learning (classification and regression), unsupervised learning (clustering, principal component analysis), Bayesian estimation, neural networks; common practices in data pre-processing, hyper-parameter tuning, and model evaluation; tools/libraries/APIs such as scikit-learn, Theano/Keras, and multi/many-core CPU/GPU programming.
@@ -320,7 +320,7 @@ course17 = Course(
     course_name="COMP3316",
     teacher=Teacher.objects.get(name="Dr. Giulio Chiribella"),
     description="Quantum information and computation",
-    course_information = """Pass in MATH1853 or MATH2014 or MATH2101 or equivalent (e.g. PHYS2155)
+    course_information = """Prerequisites: Pass in MATH1853 or MATH2014 or MATH2101 or equivalent (e.g. PHYS2155)
 
 Approved Syllabus
 This course offers an introduction to the interdisciplinary field of quantum information and computation. We will start from the basic rules of quantum theory and become familiar with the counterintuitive notions of quantum superposition and entanglement. In particular, we will see how quantum systems could be used to detect an object without directly interacting with it (Elitzur-Vaidman bomb tester), to increase the amount of bits that can be sent through a transmission line (dense coding), and to increase the chance to win certain games (CHSH game and GHZ game). Once the basics have been covered, we will provide an overview of quantum computation and of major quantum algorithms such as Grover's search algorithm and Shor's factoring algorithm for prime factorization. Finally, we will introduce the upgraded framework of quantum theory, and use it to explore applications to quantum error correction, quantum state discrimination, quantum cryptography, and quantum teleportation.
@@ -341,7 +341,7 @@ course18 = Course(
     course_name="COMP3322",
     teacher=Teacher.objects.get(name="Dr. A.T.C. Tam"),
     description="Modern Technologies on World Wide Web",
-    course_information = """Pass in COMP1117 or ENGG1330; Mutually exclusive with: IIMT3663
+    course_information = """Prerequisites: Pass in COMP1117 or ENGG1330; Mutually exclusive with: IIMT3663
 
 Approved Syllabus
 Selected network protocols relevant to the World Wide Web (e.g., HTTP, DNS, IP); World Wide Web; technologies for programming the Web (e.g, HTML, XML, style sheets, PHP, JavaScript, Node.js.; other topics of current interest (AJAX, HTML5, web services, cloud computing).
@@ -361,7 +361,7 @@ course19 = Course(
     course_name="COMP3323",
     teacher=Teacher.objects.get(name="Dr. R.C.K. Cheng"),
     description="Advanced database systems",
-    course_information = """Pass in COMP3278; Mutually exclusive with: FITE3010
+    course_information = """Prerequisites: Pass in COMP3278; Mutually exclusive with: FITE3010
 
 Approved Syllabus
 The course will study some advanced topics and techniques in database systems, with a focus on the system and algorithmic aspects.  It will also survey the recent development and progress in selected areas.  Topics include: query optimization, spatial-spatiotemporal data management, multimedia and time-series data management, information retrieval and XML, data mining.
@@ -382,7 +382,7 @@ course20 = Course(
     course_name="COMP3329",
     teacher=Teacher.objects.get(name="Dr. T.W. Chim"),
     description="Computer game design and programming",
-    course_information = """Pass in ENGG1340 or COMP2113 or COMP2123
+    course_information = """Prerequisites: Pass in ENGG1340 or COMP2113 or COMP2123
 
 Approved Syllabus
 To study the principles and practice of computer game design.
