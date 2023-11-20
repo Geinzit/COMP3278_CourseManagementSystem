@@ -85,6 +85,10 @@ def course_detail(request, course_id):
     response_content = f"This is course {course_id}"
     # 返回响应
     return HttpResponse(response_content)
+    # 从数据库中获取课程信息
+    course = Course.objects.get(course_id=course_id)
+    # 使用模板渲染课程信息
+    return render(request, 'course1_information.html', {'course': course})
 
 def curriculum(request):
     # http://127.0.0.1:8000/manager/curriculum/?student_id=123
