@@ -12,7 +12,7 @@
     <div id="welcomeInfo">
         <div class="containerBody">
             <h1>{{student_name}}, Welcome!</h1>
-            <h3>Login time:</h3>
+            <h3>Login time: {{ login_time }}</h3>
         </div>
     </div>
 
@@ -46,9 +46,9 @@
                         <td>{{ t_start|time:"H:i" }} - {{ t_end|time:"H:i" }}</td>
                         {% for course_day in course_schedule %}
                              <td>
-                                {% for weekday, start_time, end_time, course_name in course_day %}
+                                {% for weekday, start_time, end_time, course in course_day %}
                                     {% if start_time <= t_start and t_end <= end_time %}
-                                        {{ course_name }}<br>
+                                        <a href="{% url 'course_detail' course.course_id %}">{{ course.course_name }}</a><br>
                                     {% endif %}
                                 {% endfor %}
                             </td>
@@ -60,5 +60,11 @@
 
     </div>
 
+    <div class="buttons">
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" id="logoutButton">Log Out</button>
+        </form>
+    </div>
 </body>
 </html>

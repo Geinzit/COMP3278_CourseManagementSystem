@@ -40,6 +40,7 @@ class CourseSchedule(models.Model):
     weekday = models.IntegerField(choices = WEEKDAY_CHOICES, default = 0)
     start_time = models.TimeField(null = True, blank = True)
     end_time = models.TimeField(null = True, blank = True)
+    classroom_address = models.CharField(max_length = 100, null = True, blank = True)
 
 
     
