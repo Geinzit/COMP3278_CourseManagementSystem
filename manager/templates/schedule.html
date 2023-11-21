@@ -25,17 +25,13 @@
 
     <div id="timetable">
         <h2>Course Schedule</h2>
-        {% for time_range in time_ranges %}
-            <p>{{ time_range }}</p>
-            {% for day in days %}
-                    {% for course in course_schedule.day %}
-                        {% for session in course_schedule.day %}
-                        <p>{{session}}<br></p>
-                    {% endfor %}
-                    {% endfor %}
+            {% for course_day in course_schedule %}
+                {% for weekday, start_time, end_time, course_name in course_day%}
+	            <p>{{ weekday }}   {{ start_time }} ~ {{ end_time }}   {{ course_name }}</p>
+
+		{% endfor %}
             {% endfor %}
-    {% endfor %}
-        <table>
+	<table>
             <thead>
                 <tr>
                     <th>&nbsp;</th>
@@ -50,16 +46,14 @@
             </thead>
 
             <tbody>
-                {% for time_range in time_ranges %}
+                {% for t_start, t_end in time_ranges %}
                     <tr>
-                        <td>{{ time_range }}</td>
-                        {% for day in days %}
-                            <td>
-                                {% for course in course_schedule.day %}
-                                    {{ course }}<br>
-
-                                    {% if course.start_time <= time_range and time_range < course.end_time %}
-                                        {{ course.name }}<br>
+                        <td>{{ t_start|time:"H:i" }} - {{ t_end|time:"H:i" }}</td>
+                        {% for course_day in course_schedule %}
+                             <td>
+                                {% for weekday, start_time, end_time, course_name in course_day %}
+                                    {% if start_time <= t_start and t_end <= end_time %}
+                                        {{ course_name }}<br>
                                     {% endif %}
                                 {% endfor %}
                             </td>

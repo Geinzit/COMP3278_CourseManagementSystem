@@ -12,9 +12,24 @@ from io import BytesIO
 from .models import Student, Teacher, Course, CourseSchedule, Enrollment
 from .face_rec import face_rec, pil_to_cv2
 
+"""
+TODO
+
+remove_course
+
+logout_button
+
+"""
+
+
 def add_course(request, course_id):
+    # authenticate the student
+    if request.session.get('authentication', None) is None:
+        return redirect('/manager/login')
+    
     if request.method == 'POST':
-        student_id = request.user.name  # assuming the student's username is used as the student_id
+        student_id = request.session['authentication']
+        # assuming the student's username is used as the student_id
 
         # Get the student and course objects
         student = get_object_or_404(Student, name=student_id)
@@ -78,6 +93,14 @@ def login_page(request):
         # 打印用户名和识别出的学生名字
         print(f"Username: {username}, Recognized as: {student_name}")
 
+        # for testing
+        # student_name = "3035844077" 
+        try:
+            student = Student.objects.get(name = student_name)
+            request.session['authentication'] = student_name
+        except:
+            return HttpResponse("Student not found")
+        
         # database check required here
 
         return redirect(f'/manager/curriculum/?student_id={student_name}')
@@ -98,23 +121,19 @@ def course_detail(request, course_id):
 
 def curriculum(request):
     # http://127.0.0.1:8000/manager/curriculum/?student_id=123
-    def is_valid_student(student_id):
-        return True
-    
-    # 获取查询参数 student_id
-    student_id = request.GET.get('student_id', None)
+    # authenticate the student
+    if request.session.get('authentication', None) is None:
+        return redirect('/manager/login')
 
-    # 这里实现你的验证逻辑
-    if not student_id or not is_valid_student(student_id):
-        # 如果验证失败，可以重定向或返回错误信息
-        return HttpResponse("Invalid or missing student ID", status=400)
-
+    student_id = request.session['authentication']
     # 如果验证成功，继续处理
     Enrollments = Enrollment.objects.filter(student = student_id)
-    Enrolled_courses = Course.objects.filter(course_id__in = Enrollments)
-    
+    #print(Enrollments.values_list('course', flat=True))
+    Enrolled_courses = Course.objects.filter(course_id__in = Enrollments.values_list('course'))
+    #print(Enrolled_courses.values_list('course_id', flat=True))
     Sessions = CourseSchedule.objects.filter(course__in = Enrolled_courses)
     Sessions = Sessions.order_by("start_time")
+    #print(Sessions.values_list('course', flat=True))
 
     # getting the events that will happen in an hour
     current_time = timezone.now()
@@ -130,24 +149,34 @@ def curriculum(request):
         context = {"student_name": student_name, "sessions1h": SessionIn1H}
         return render(request, "curriculum.html", context)
     else:
-        course_schedule = {}
-        time_ranges = ['9:30-10:20', '10:30-11:20', '11:30-12:20', '12:30-13:20', '13:30-14:20','13:30-14:20','14:30-15:20','15:30-16:20','16:30-17:20','17:30-18:20','18:30-19:20']
+        course_schedule = []
+        time_ranges_str = ['9:30-10:20', '10:30-11:20', '11:30-12:20', '12:30-13:20', '13:30-14:20','13:30-14:20','14:30-15:20','15:30-16:20','16:30-17:20','17:30-18:20','18:30-19:20']
+        time_ranges = []
+        for time_range in time_ranges_str:
+            time_range = time_range.split('-')
+            time_range = [datetime.strptime(time, '%H:%M').time() for time in time_range]
+            time_range = (time_range[0], time_range[1])
+            time_ranges.append(time_range)
+        
         days = [0,1,2,3,4,5,6]
-
+        for day in days:
+            course_schedule.append([])
         for course in Sessions:
             # Assuming the course has fields 'start_time' and 'end_time' representing the course duration
             start_time = course.start_time
             end_time = course.end_time
 
             day = course.weekday
-
+            #print(day, start_time, end_time)
             # Create a list to store the time range for each day
-            if day not in course_schedule:
-                course_schedule[day] = []
-
+            #if day not in course_schedule:
+            #    course_schedule[day] = []
+            # print(day, start_time, end_time, course.course.course_name)
             # Add the course name and time range to the corresponding day
-            course_schedule[day].append((start_time, end_time))
-
+            course_schedule[day].append((course.get_weekday_display(),course.start_time, end_time, course.course.course_name))
+        for day in days:
+            for schedule in course_schedule[day]:
+                print(schedule)
         context = {"student_name": student_name,'course_schedule': course_schedule,'time_ranges': time_ranges, 'days': days}
         return render(request, "schedule.html",context)
     #return HttpResponse(f"Curriculum for student ID: {student_id}")
