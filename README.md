@@ -14,7 +14,7 @@ Group Project for COMP3278
 * Face Recognition-based Login and Authentication System 
 * Fully interactable course selection / removal system with a full fledged Course Timetable for easy visualization
 * Detecting and informing details on upcoming courses (in one hour to be precise)
-* Full list of Courses 
+* Full list of viewable Courses, including their weekly schedules, and Lecturers' information
 ### Design of URLs and Parameter
 
 * Login Page: `http://host-address/manager/login/`
