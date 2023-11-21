@@ -33,6 +33,7 @@ students_data = [
 ]
 
 def load_data(dat):
+    from manager.models import Student
     for student in dat:
         obj, created = Student.objects.get_or_create (
             name = student["name"],

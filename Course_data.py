@@ -439,7 +439,8 @@ Be able to learn new development environment
 [learn from other source codes and projects]
 Be able to learn from other source codes and projects """
 )
-    
+
+Course.objects.all().delete()
 for i in range(1,21):
     #print(i)
     name = f"course{i}"
