@@ -339,7 +339,7 @@ teacher30 = Teacher(
          "Dr. Zhang actively collaborates with industry partners to bring advanced HCI concepts into real-world applications.")
 )
 
-
+Teacher.objects.all().delete()
 teacher1.save()
 teacher2.save()
 teacher3.save()
