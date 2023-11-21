@@ -169,7 +169,7 @@ def curriculum(request):
         return render(request, "curriculum.html", context)
     else:
         course_schedule = []
-        time_ranges_str = ['9:30-10:20', '10:30-11:20', '11:30-12:20', '12:30-13:20', '13:30-14:20','13:30-14:20','14:30-15:20','15:30-16:20','16:30-17:20','17:30-18:20','18:30-19:20']
+        time_ranges_str = ['9:30-10:20', '10:30-11:20', '11:30-12:20', '12:30-13:20','13:30-14:20','14:30-15:20','15:30-16:20','16:30-17:20','17:30-18:20','18:30-19:20']
         time_ranges = []
         for time_range in time_ranges_str:
             time_range = time_range.split('-')

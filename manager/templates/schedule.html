@@ -25,12 +25,7 @@
 
     <div id="timetable">
         <h2>Course Schedule</h2>
-            {% for course_day in course_schedule %}
-                {% for weekday, start_time, end_time, course_name in course_day%}
-	            <p>{{ weekday }}   {{ start_time }} ~ {{ end_time }}   {{ course_name }}</p>
 
-		{% endfor %}
-            {% endfor %}
 	<table>
             <thead>
                 <tr>

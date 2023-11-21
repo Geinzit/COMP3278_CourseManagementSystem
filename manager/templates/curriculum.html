@@ -22,25 +22,29 @@
                 <img class="icon" src="{% static 'img/reminder.png' %}">
                 <h3>You have class within one hour!</h3>
             </div>
-            <p>Time: {{sessions1h.start_time}} </p>
-            <p>Classroom address: </p>
+            {% for session in sessions1h %}
+                <p>Time: {{ session.start_time }} </p>
+                <p>Classroom address: {{ session.course.course_name }}</p>
+            {% endfor %}
         </div>
         <ul>
             <li>
                 <div id="courseInfo">
                     <h3>Course Information</h3>
-                        <p>Course Name: {{sessions1h.course.course_name}}</p>
-                        <p>Course ID: {{sessions1h.course.course_id}} </p>
-                        <p>Course Teacher: <a href="teacher/{{sessions1h.course.teacher.id}}/"> {{sessions1h.course.teacher.name}} </a> </p>
+                        {% for session in sessions1h %}
+                            <p>Course Name: {{session.course.course_name}}</p>
+                            <p>Course ID: {{session.course.course_id}} </p>
+                            <p>Course Teacher: <a href="teacher/{{session.course.teacher.id}}/"> {{session.course.teacher.name}} </a> </p>
+                        {% endfor %}
+
                 </div>
             </li>
 
             <li>
                 <div id="teacherMsg">
                     <h3>Teacher's Message</h3>
-                    <p>{{sessions1h.course.teacher.bio}}</p>
-                    {% for course in enrolled_classes %}
-                        <p>Course name: {{course.course_name}} </p>
+                    {% for session in sessions1h %}
+                        <p>{{session.course.teacher.bio}}</p>
                     {% endfor %}
                 </div>
             </li>

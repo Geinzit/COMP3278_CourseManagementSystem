@@ -24,7 +24,6 @@
             </svg>
             <h1>Course Information</h1>
             <!-- 添加的详细信息链接 -->
-            <a href="{% url 'course1_information' course.course_id %}" class="detail-link">Detail</a>
         </div>
         <div class="CourseDetails_content">
             <div class="CourseDetails_content_item">
@@ -47,17 +46,30 @@
                     {% endfor %}
                 </div>
             </div>
-
+            <div class="buttons">
             <!-- 添加报名按钮 -->
+            <a href="{% url 'course1_information' course.course_id %}" class="detail-link" style="text-decoration: underline;background-color: yellow; padding: 1px;">Detail</a>
             <form action="{% url 'add_course' course.course_id %}" method="post">
                 {% csrf_token %}
-                <button type="submit">Enroll in Course</button>
+                <button type="submit" id="enrollButton">Enroll in Course</button>
             </form>
 
 	    <!-- remove_course -->
 	    <form action="{% url 'remove_course' course.course_id %}" method="post">
 	        {% csrf_token %}
 	        <button type="submit">Drop Course</button>
+	    </from>
+		<script>
+                // Add event listener to the button
+                var enrollButton = document.getElementById("enrollButton");
+                enrollButton.addEventListener("click", function() {
+                    // Display an alert when the button is clicked
+                    alert("Successfully enrolled!");
+                });
+		</script>
+        </div>
+
+>>>>>>> bce7c0023691a65096b599c49c1540eac2712351
         </div>
     </div>
 </body>
