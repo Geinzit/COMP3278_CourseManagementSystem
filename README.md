@@ -5,6 +5,10 @@ Group Project for COMP3278
 
 [TODO]
 
+### Data Structure
+
+![ER Diagram](img/ER_diagram.jpg)
+
 ### Features
 
 * Capture the Face Data and Login
