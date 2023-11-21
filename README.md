@@ -43,3 +43,7 @@ python manage.py runserver
   * run `manager/face_data.py` to collect the data and train the model
 * Add user course data:
   * @Haoyu to finish it
+  
+## How to add our sample data to database(need refining)
+- under the project folder, enter django shell with ```python manage.py shell```
+- run the corresponding data python file(Course_data.py, Schedule_data.py etc.) in the shell, for example ```exec(open('Schedule_data.py').read())```
