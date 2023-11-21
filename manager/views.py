@@ -15,8 +15,6 @@ from .face_rec import face_rec, pil_to_cv2
 """
 TODO
 
-remove_course
-
 logout_button
 
 """
@@ -83,7 +81,7 @@ def index(request):
                 'teacher': course.teacher,
                 'description': course.description,
             })
-    return render(request, 'index.html', {'course_list': processed_courses})
+    return render(request, 'index.html', {'course_list': courses})
    
 def course(request, course_id):
     course = Course.objects.get(course_id = course_id)

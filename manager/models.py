@@ -5,7 +5,7 @@ class Student(models.Model):
     usrname = models.CharField(max_length = 100, null = True, blank = True)
     email = models.CharField(max_length = 100, null = True, blank = True)
     bio = models.CharField(max_length = 1000, null = True, blank = True)
-
+    login_time = models.DateTimeField(null = True, blank = True)
     
 class Teacher(models.Model):
     id = models.IntegerField(primary_key=True)

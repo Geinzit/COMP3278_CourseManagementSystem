@@ -20,23 +20,21 @@
         <table>
             <thead>
                 <tr>
-                    <th> CourseId</th>
-                    <th>CourseName</th>
-		    <th>weekday</th>
-		    <th>StartTime</th>
-                    <th>EndTime</th>
-                    <th>Operation</th>
+                    <th>Course Id</th>
+                    <th>Course Name</th>
+		    <th>Course Description</th>
+		    <th>Lecturer</th>
+                    <th>More Information</th>
                 </tr>
             </thead>
             <tbody>
                 {% for course in course_list %}
                 <tr>
-                    <td>{{ course.course_id }}</td>
-                    <td>{{ course.course_name }}</td>
-		    <td>{{ course.weekday }}</td>
-                    <td>{{ course.start_time }}</td>
-                    <td>{{ course.end_time }}</td>
-                    <td><a href="course/{{ course.course_id }}">Check</a></td>
+                    <td style="text-align: left;">{{ course.course_id }}</td>
+                    <td style="text-align: left;">{{ course.course_name }}</td>
+		    <td style="text-align: left;">{{ course.description }}</td>
+                    <td style="text-align: left;"><a href="teacher/{{ course.teacher_id }}">{{ course.teacher.name }}</a></td>
+                    <td style="text-align: left;"><a href="course/{{ course.course_id }}">Check</a></td>
                 </tr>
                 {% endfor %}
 
