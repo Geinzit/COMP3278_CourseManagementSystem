@@ -47,3 +47,25 @@ python manage.py runserver
 ## How to add our sample data to database(need refining)
 - under the project folder, enter django shell with ```python manage.py shell```
 - run the corresponding data python file(Course_data.py, Schedule_data.py etc.) in the shell, for example ```exec(open('Schedule_data.py').read())```
+
+## Add your face data
+
+0. Unzip our existing [dataset](https://drive.google.com/file/d/1mhWGQm_pGOPZohD24spFRHFVY-Nh__oC/view?usp=sharing) under into `manager/data`.
+
+1. If you want, you can create your own face data under `manager` directory
+
+   * Step 1: Modify the `manager/face_data.py`, then run the code to collect the data
+
+     ```python
+     if __name__ == "__main__":
+         capture_data(user_name="UID YOU WANT")
+         # train_model("data/data", "data")
+     ```
+
+   * Step 2: Modify the `manager/face_data.py`, then run the code to train the model
+
+     ```python
+     if __name__ == "__main__":
+         # capture_data(user_name="UID YOU WANT")
+         train_model("data/data", "data")
+     ```
