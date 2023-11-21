@@ -5,6 +5,18 @@ Group Project for COMP3278
 
 [TODO]
 
+### Features
+
+* Capture the Face Data and Login
+* Course Timetable
+
+### Design of URLs and Parameter
+
+* Login Page: `http://127.0.0.1:8000/manager/login/`
+* Course Timetable: `http://127.0.0.1:8000/manager/curriculum/`
+* Course Content: 
+* Course Detail:
+
 ## How to Start
 
 1. Install all requirement package using conda
