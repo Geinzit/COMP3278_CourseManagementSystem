@@ -36,7 +36,7 @@ course2 = Course(
     course_information="""Prerequisites: Pass in ENGG1340 or COMP2113 or COMP2123
 
 Approved Syllabus
-To study data structures and algorithms in the broader context of solving problems using computers. 
+To study data structures and algorithms in the broader context of solving problems using computers.
 The course includes topics such as arrays, linked lists, trees, and graphs; stacks and queues; symbol tables; 
 Priority queues, balanced trees; sorting algorithms; and complexity analysis. 
 The course aims to provide a comprehensive understanding of these fundamental concepts and their applications in computer science.
