@@ -20,7 +20,26 @@ remove_course
 logout_button
 
 """
+def remove_course(request, course_id):
+    if request.session.get('authentication', None) is None:
+        return redirect('/manager/login')
 
+    if request.method == 'POST':
+        student_id = request.session['authentication']
+
+        # Get the student and course objects
+        student = get_object_or_404(Student, name=student_id)
+        course = get_object_or_404(Course, course_id=course_id)
+
+        # Check if the enrollment exists
+        if not Enrollment.objects.filter(course=course, student=student).exists():
+            return HttpResponse("You are not enrolled in this course.")
+
+        # Delete the enrollment object
+        enrollment = Enrollment.objects.get(course=course, student=student)
+        enrollment.delete()
+
+        return redirect('/manager')
 
 def add_course(request, course_id):
     # authenticate the student
