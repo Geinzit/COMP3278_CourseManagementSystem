@@ -1,9 +1,3 @@
-from django.utils import timezone
-from datetime import datetime
-
-from manager.models import Course, CourseSchedule
-
-
 # Helper function to convert weekday and time to a datetime object for the current week
 weekdays = {
     'Mon': 0, 'Tue': 1, 'Wed': 2, 'Thu': 3, 'Fri': 4, 'Sat': 5, 'Sun': 6
@@ -52,6 +46,12 @@ schedule_data = {
 
 
 def get_schedule_data():
+    from manager.models import Course, CourseSchedule
+    from django.utils import timezone
+    from datetime import datetime
+
+    CourseSchedule.objects.all().delete()
+    global schedule_data, weekdays
     # Iterating through schedule data
     for course_id, times, address in schedule_data.items():
         # If CourseSchedules exist, update the times; otherwise, create new ones
@@ -77,7 +77,5 @@ def get_schedule_data():
             end_time = datetime.strptime(end, "%H:%M").time()
             new_course_schedule = CourseSchedule(course=course, weekday=weekdays[weekday], start_time=start, end_time=end, address=address)
             new_course_schedule.save()
-        
-CourseSchedule.objects.all().delete()
 get_schedule_data()
 

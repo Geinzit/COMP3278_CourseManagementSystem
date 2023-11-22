@@ -459,15 +459,9 @@ Be able to learn new development environment
 Be able to learn from other source codes and projects """,
     moodle_link="https://moodle.hku.hk/course/view.php?id=96525"
 )
-
 Course.objects.all().delete()
-for i in range(1,21):
-    #print(i)
-    name = f"course{i}"
-    #print(name,globals()[name])
-    course = globals()[name]
+courses = [course1, course2, course3, course4, course5, course6, course7, course8, course9, course10, course11, course12, course13, course14, course15, course16, course17, course18, course19, course20]
+for course in courses:
     course.save()
-    #course, created = Course.objects.get_or_create(globals()[name])
-   # if not created:
-    #    break
+
 
