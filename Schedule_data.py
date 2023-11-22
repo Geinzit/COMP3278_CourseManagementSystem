@@ -50,7 +50,7 @@ def get_schedule_data():
 
     CourseSchedule.objects.all().delete()
     # Iterating through schedule data
-    for course_id, times, address in schedule_data.items():
+    for course_id, times in schedule_data.items():
         # If CourseSchedules exist, update the times; otherwise, create new ones
         """
         if course_schedules.exists():
@@ -68,11 +68,10 @@ def get_schedule_data():
             # CourseSchedules don't exist, create new ones
             # print(course_id)
         course = Course.objects.get(course_id=course_id)
-        address = address[0]
-        for weekday, start, end in times:
+        for weekday, start, end, address in times:
             start_time = datetime.strptime(start, "%H:%M").time()
             end_time = datetime.strptime(end, "%H:%M").time()
-            new_course_schedule = CourseSchedule(course=course, weekday=weekdays[weekday], start_time=start, end_time=end, address=address)
+            new_course_schedule = CourseSchedule(course=course, weekday=weekdays[weekday], start_time=start, end_time=end, classroom_address=address)
             new_course_schedule.save()
 get_schedule_data()
 
