@@ -11,15 +11,16 @@ Group Project for COMP3278
 
 ### Features
 
-* Capture the Face Data and Login
-* Course Timetable
-
+* Face Recognition-based Login and Authentication System 
+* Fully interactable course selection / removal system with a full fledged Course Timetable for easy visualization
+* Detecting and informing details on upcoming courses (in one hour to be precise)
+* Full list of viewable Courses, including their weekly schedules, and Lecturers' information
 ### Design of URLs and Parameter
 
-* Login Page: `http://127.0.0.1:8000/manager/login/`
-* Course Timetable: `http://127.0.0.1:8000/manager/curriculum/`
-* Course Content: 
-* Course Detail:
+* Login Page: `http://host-address/manager/login/`
+* Course Timetable: `http://host-address/manager/curriculum/`
+* Course List: `http://host-address/manager`
+* Course Detail: `http://host-address/manager/course/?course-id={{ course_id }}`
 
 ## How to Start
 
@@ -30,10 +31,13 @@ conda create -n comp3278 python=3.11
 pip install -r requirements.txt
 ```
 
-2. Set the SQL setting
+2. Database settings
 
-Under `courseManager/setting` set your sql information,
+Set up your Database server(make sure the server has proper support with django). It's recommended to use a new empty database to avoid migration problems.
 
+Under `courseManager/settings.py` set your database information,
+
+by default, the settings are.
 ```python
 DATABASES = {
     "default": {
@@ -46,8 +50,12 @@ DATABASES = {
     }
 }
 ```
+next, perform the migrations.
+```bash
+python manage.py migrate
+```
 
-3. Run the code
+3. Run the server
 
 ```bash
 python manage.py runserver
