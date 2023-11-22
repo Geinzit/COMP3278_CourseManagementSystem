@@ -20,6 +20,7 @@ class Course(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete = models.CASCADE, null = True, blank = True)
     description = models.CharField(max_length = 1000, null = True, blank = True)
     course_information = models.TextField(max_length = 1000, null=True, blank=True)
+    moodle_link = models.CharField(max_length = 100, null = True, blank = True)
  
 
 
