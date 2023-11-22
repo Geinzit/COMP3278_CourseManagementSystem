@@ -136,7 +136,7 @@ def curriculum(request):
     #print(Sessions.values_list('course', flat=True))
 
     # getting the events that will happen in an hour
-    current_time = timezone.now()
+    current_time = timezone.now()-timedelta(hours=2)#for testing only
     one_hour_later = current_time + timedelta(hours=1)
 
     current_weekday = current_time.weekday()
@@ -146,7 +146,7 @@ def curriculum(request):
     student_name=Student.objects.get(name=student_id).usrname
     
     if SessionIn1H.exists():
-        context = {"student_name": student_name, "sessions1h": SessionIn1H}
+        context = {"student_name": student_name, "sessions1h": SessionIn1H, "current_time":current_weekday}#test only
         return render(request, "curriculum.html", context)
     else:
         course_schedule = []
