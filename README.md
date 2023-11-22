@@ -69,6 +69,8 @@ python manage.py runserver
   * @Haoyu to finish it
   
 ## How to add our sample data to database(need refining)
+- Simply run `python manage.py load_data_fromPython`
+[Alternative]
 - under the project folder, enter django shell with ```python manage.py shell```
 - run the corresponding data python file(Course_data.py, Schedule_data.py etc.) in the shell, for example ```exec(open('Schedule_data.py').read())```
 
