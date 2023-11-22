@@ -266,7 +266,7 @@ Upon successful completion of this course, students will be able to:
 - Utilize the GHC compiler and the GHCI command line interpreter effectively.
 - Analyze and design solutions for problems using functional programming modeling techniques, model data structures as algebraic datatypes, and define operations by pattern matching.
 - Understand and explain advanced functional programming techniques such as recursion, datatypes, higher-order functions, functional data structures, and algorithms.""",
-    moddle_link="https://moodle.hku.hk/course/view.php?id=106518"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=106518"
 )
 
 course13 = Course(
