@@ -68,9 +68,19 @@
         </ul>
 
         <div id="email">
-            <input class="buttons" type="submit" value="Send to my email">
-        </div>
+	    <form method="post" action="{% url 'send_email' %}">
+                {% csrf_token %}
+		<input class="buttons" type="submit" value="Send Email Notification">
+            </from>
+	</div>
     </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
 </body>
 </html>

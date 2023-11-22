@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.db.models import Q
 from django.utils import timezone
+from django.core.mail import send_mail
+from django.http import HttpResponse
+from django.contrib import messages
+
 from datetime import datetime, timedelta
 from .models import Student, Teacher, Course, CourseSchedule, Enrollment
 
@@ -12,6 +16,34 @@ from io import BytesIO
 from .models import Student, Teacher, Course, CourseSchedule, Enrollment
 from .face_rec import face_rec, pil_to_cv2
 
+def send_email(request):
+    if(request.session.get('authentication', None) is None):
+        return redirect('/manager/login')
+    if(request.method == 'POST'):
+        student_id = request.session['authentication']
+        Sessions, SessionIn1H = getSessions(student_id)
+        subject = "Reminder: You have classes in 1 hour"
+        
+        message = ""
+        for session in SessionIn1H:
+            print(session)
+            message += f"Course: {session.course.course_name} - {session.course.description}\nTime: {session.start_time} - {session.end_time}\nVenue: {session.classroom_address} \n"
+
+        # enter the email address you wish to send from
+        from_email = "your-email-address"
+        recipient_list = [Student.objects.get(name = request.session['authentication']).email]
+
+        # clear messages
+        list(messages.get_messages(request))
+        
+        try:
+            send_mail(subject, message, from_email, recipient_list)
+            messages.success(request, f"Email sent successfully")
+        except Exception as e:
+            messages.error(request, f"Error sending email: {str(e)}")
+
+        return redirect('/manager/curriculum')
+            
 def remove_course(request, course_id):
     if request.session.get('authentication', None) is None:
         return redirect('/manager/login')
@@ -88,7 +120,7 @@ def login_page(request):
         print(f"Username: {username}, Recognized as: {student_id}")
 
         # for testing
-        #student_id = "3035844077" 
+        student_id = "3035844077" 
         try:
             student = Student.objects.get(name = student_id)
             request.session['authentication'] = student_id
@@ -118,19 +150,7 @@ def course_detail(request, course_id):
     # 返回响应
     return HttpResponse(response_content)
 
-
-def curriculum(request):
-    # http://127.0.0.1:8000/manager/curriculum/?student_id=123
-    # authenticate the student
-    if request.session.get('authentication', None) is None:
-        return redirect('/manager/login')
-
-    student_id = request.session['authentication']
-    student = Student.objects.get(name=student_id)
-    login_time = timezone.localtime(student.login_time).strftime("%Y-%m-%d %H:%M:%S")
-    student_name=student.usrname
-    
-    # 如果验证成功，继续处理
+def getSessions(student_id):
     Enrollments = Enrollment.objects.filter(student = student_id)
     # print(Enrollments.values_list('course', flat=True))
     Enrolled_courses = Course.objects.filter(course_id__in = Enrollments.values_list('course'))
@@ -146,6 +166,20 @@ def curriculum(request):
     next_weekday = (current_weekday + 1) % 7
 
     SessionIn1H = Sessions.filter(Q(weekday=current_weekday, start_time__range = (current_time.time(), one_hour_later.time())))
+    return Sessions, SessionIn1H
+
+def curriculum(request):
+    # http://127.0.0.1:8000/manager/curriculum/?student_id=123
+    # authenticate the student
+    if request.session.get('authentication', None) is None:
+        return redirect('/manager/login')
+
+    student_id = request.session['authentication']
+    student = Student.objects.get(name=student_id)
+    login_time = timezone.localtime(student.login_time).strftime("%Y-%m-%d %H:%M:%S")
+    student_name=student.usrname
+    
+    Sessions, SessionIn1H = getSessions(student_id)
     
     if SessionIn1H.exists():
         context = {"student_name": student_name, "sessions1h": SessionIn1H, "login_time": login_time}
@@ -175,4 +209,3 @@ def curriculum(request):
         
         context = {"student_name": student_name,'course_schedule': course_schedule,'time_ranges': time_ranges, 'days': days, "login_time": login_time}
         return render(request, "schedule.html", context)
-    #return HttpResponse(f"Curriculum for student ID: {student_id}")
