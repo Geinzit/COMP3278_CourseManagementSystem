@@ -44,7 +44,7 @@ table {
 }
 
 td, th {
-    width: 14%;
+    width: 12%;
     height: 2em;
     border: 1px solid black;
     border-spacing: 0px;
@@ -59,4 +59,14 @@ td, th {
     background-color: rgba(240, 218, 128, 0.505);
     border: 2px dashed rgb(192, 141, 0);
 
+}
+
+.list-link{
+    display: inline-block;
+    padding: 0px 2px;
+    background-color: #e6e6e6;
+    border: 1px solid black;
+    text-decoration: none;
+    color: #000;
+    font-size: small;
 }
