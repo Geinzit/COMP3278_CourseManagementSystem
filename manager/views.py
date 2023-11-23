@@ -111,6 +111,7 @@ def index(request):
     now = timezone.now()
     courses = Course.objects.all()
     return render(request, 'index.html', {'course_list': courses})
+    return render(request, 'index.html', {'course_list': courses})
    
 def course(request, course_id):
     course = Course.objects.get(course_id = course_id)
