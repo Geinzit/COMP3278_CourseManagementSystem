@@ -140,7 +140,7 @@ def login_page(request):
         print(f"Username: {username}, Recognized as: {student_id}")
 
         # for testing
-        student_id = "3035844077" 
+        #student_id = "3035844077" 
         try:
             student = Student.objects.get(name = student_id)
             request.session['authentication'] = student_id
@@ -205,26 +205,93 @@ def curriculum(request):
         context = {"student_name": student_name, "sessions1h": SessionIn1H, "login_time": login_time}
         return render(request, "curriculum.html", context)
     else:
-        course_schedule = []
-        time_ranges_str = ['9:30-10:20', '10:30-11:20', '11:30-12:20', '12:30-13:20','13:30-14:20','14:30-15:20','15:30-16:20','16:30-17:20','17:30-18:20','18:30-19:20']
-        time_ranges = []
-        for time_range in time_ranges_str:
-            time_range = time_range.split('-')
-            time_range = [datetime.strptime(time, '%H:%M').time() for time in time_range]
-            time_range = (time_range[0], time_range[1])
-            time_ranges.append(time_range)
-        
-        days = [0,1,2,3,4,5,6]
-        for day in days:
-            course_schedule.append([])
-        for course in Sessions:
-            # Assuming the course has fields 'start_time' and 'end_time' representing the course duration
-            start_time = course.start_time
-            end_time = course.end_time
-            duration = end_time.hour * 60 + end_time.minute -start_time.hour * 60 -start_time.minute
+        return redirect(f'/manager/schedule')
+    
+def schedule(request):
+    if request.session.get('authentication', None) is None:
+        return redirect('/manager/login')
 
-            day = course.weekday
-            course_schedule[day].append((course.get_weekday_display(),course.start_time, end_time, course.course, duration))
+    student_id = request.session['authentication']
+    student = Student.objects.get(name=student_id)
+    login_time = timezone.localtime(student.login_time).strftime("%Y-%m-%d %H:%M:%S")
+    student_name=student.usrname
+    
+    Sessions, SessionIn1H = getSessions(student_id)
 
-        context = {"student_name": student_name,'course_schedule': course_schedule,'time_ranges': time_ranges, 'days': days, "login_time": login_time}
-        return render(request, "schedule.html", context)
+    course_schedule = []
+    time_ranges_str = ['8:30-9:20','9:30-10:20', '10:30-11:20', '11:30-12:20', '12:30-13:20','13:30-14:20','14:30-15:20','15:30-16:20','16:30-17:20','17:30-18:20','18:30-19:20','19:30-20:20']
+    time_ranges = []
+    for time_range in time_ranges_str:
+        time_range = time_range.split('-')
+        time_range = [datetime.strptime(time, '%H:%M').time() for time in time_range]
+        time_range = (time_range[0], time_range[1])
+        time_ranges.append(time_range)
+    
+    days = [0,1,2,3,4,5,6]
+    for day in days:
+        course_schedule.append([])
+    for course in Sessions:
+        # Assuming the course has fields 'start_time' and 'end_time' representing the course duration
+        start_time = course.start_time
+        end_time = course.end_time
+        duration = end_time.hour * 60 + end_time.minute -start_time.hour * 60 -start_time.minute
+        half = False
+        if (start_time.minute == 0):
+            start_datetime = datetime.combine(datetime.today(), start_time)
+            updated_datetime = start_datetime - timedelta(minutes=30)
+            start_time = updated_datetime.time()
+            end_datetime = datetime.combine(datetime.today(), end_time)
+            updated_datetime = end_datetime + timedelta(minutes=30)
+            end_time = updated_datetime.time()
+            half=True
+
+        day = course.weekday
+        course_schedule[day].append((course.get_weekday_display(),start_time, end_time, course, duration,half))
+
+    context = {"student_name": student_name,'course_schedule': course_schedule,'time_ranges': time_ranges, 'days': days, "login_time": login_time}
+    return render(request, "schedule.html", context)
+
+    
+def timetable(request):
+    if request.session.get('authentication', None) is None:
+        return redirect('/manager/login')
+
+    student_id = request.session['authentication']
+    student = Student.objects.get(name=student_id)
+    login_time = timezone.localtime(student.login_time).strftime("%Y-%m-%d %H:%M:%S")
+    student_name=student.usrname
+    
+    Sessions, SessionIn1H = getSessions(student_id)
+
+    course_schedule = []
+    time_ranges_str = ['8:30-9:20','9:30-10:20', '10:30-11:20', '11:30-12:20', '12:30-13:20','13:30-14:20','14:30-15:20','15:30-16:20','16:30-17:20','17:30-18:20','18:30-19:20','19:30-20:20']
+    time_ranges = []
+    for time_range in time_ranges_str:
+        time_range = time_range.split('-')
+        time_range = [datetime.strptime(time, '%H:%M').time() for time in time_range]
+        time_range = (time_range[0], time_range[1])
+        time_ranges.append(time_range)
+    
+    days = [0,1,2,3,4,5,6]
+    for day in days:
+        course_schedule.append([])
+    for course in Sessions:
+        # Assuming the course has fields 'start_time' and 'end_time' representing the course duration
+        start_time = course.start_time
+        end_time = course.end_time
+        duration = end_time.hour * 60 + end_time.minute -start_time.hour * 60 -start_time.minute
+        half = False
+        if (start_time.minute == 0):
+            start_datetime = datetime.combine(datetime.today(), start_time)
+            updated_datetime = start_datetime - timedelta(minutes=30)
+            start_time = updated_datetime.time()
+            end_datetime = datetime.combine(datetime.today(), end_time)
+            updated_datetime = end_datetime + timedelta(minutes=30)
+            end_time = updated_datetime.time()
+            half=True
+
+        day = course.weekday
+        course_schedule[day].append((course.get_weekday_display(),start_time, end_time, course, duration, half))
+
+    context = {"student_name": student_name,'course_schedule': course_schedule,"sessions1h": SessionIn1H,'time_ranges': time_ranges, 'days': days, "login_time": login_time}
+    return render(request, "timetable.html", context)
