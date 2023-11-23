@@ -119,8 +119,11 @@ def course(request, course_id):
     course = Course.objects.get(course_id = course_id)
     course_schedules = CourseSchedule.objects.filter(course = course_id)
     related_courseID = get_related_courseID(course_id)
+    related_course = []
+    for id in related_courseID:
+        related_course.append(Course.objects.get(course_id = id))
     # TODO: add Related course function
-    context = {"course":course, "course_schedules":course_schedules}
+    context = {"course":course, "course_schedules":course_schedules, "related_course":related_course}
     return render(request, "course.html", context)
     
 def teacher(request, teacher_id):
