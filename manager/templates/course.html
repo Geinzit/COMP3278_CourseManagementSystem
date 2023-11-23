@@ -77,9 +77,11 @@
     <br>
     <div class="CourseDetails_content_item" style="padding-left: 111px">
         <h2> Related Courses</h2>
+        <ul style="padding-left: 30px">
         {% for course in related_course %}
-            <a href="/manager/course/{{course.course_id}}" style="padding-left:20px;">{{course.course_name}}</a></p>
+            <li><a href="/manager/course/{{course.course_id}}" style="padding-left:20px;">{{course.course_name}}: {{course.description}}</a></li>
         {% endfor %}
+        </ul>
     </div>
 </body>
 
