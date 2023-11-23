@@ -24,7 +24,8 @@ Able to identify possible solutions for problems based on computer programs.
 Able to implement solutions for problems using Python
 [Program comprehension]
 Able to understand programs written by others and participate in larger scale system implementation""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=68544"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=68544",
+    message = "Remember to turn in your assignments on time!"
 )
 
     
@@ -49,7 +50,8 @@ By the end of this course, students should be able to demonstrate a threshold le
 - [Data structures] Understand well-known generic data structures such as stack, queue, tree and related algorithms and apply them to solve problems.
 - [Problem solving] Design new data structures and algorithms to solve problems.
 - [Implementation] Implement selected data structures and algorithms.""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=106622"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=106622",
+    message = "Remember to turn in your assignments on time!"
 )
 
 course3 = Course(
@@ -72,7 +74,8 @@ To introduce the hardware organization of computers and detailed operations of c
 The course will cover topics such as computer organization and architecture, data representations, instruction sets, machine and assembly languages;
 Basic logic design and integrated devices, CPU and its control, memory and caches, I/O and storage systems, and computer arithmetic. 
 By the end of this course, students will have a solid understanding of how computer systems are organized and operate at a hardware level.""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=96615"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=96615",
+    message = "Remember to turn in your assignments on time!"
 )
 
 course4 = Course(
@@ -92,7 +95,8 @@ Course Objectives
 The primary goal of this course is to introduce those mathematical topics whose understanding is essential to computer studies and to develop mathematical maturity in reasoning and analysis. 
 By the end of this course, students are expected to have a solid foundation in discrete mathematics and an ability to apply this knowledge to computer science topics.
 Including logic, set theory, mathematical reasoning, counting techniques, discrete probability, and the analysis of algorithms.""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=106628"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=106628",
+    message = "Remember to turn in your assignments on time!"
 )
 
 course5 = Course(
@@ -112,7 +116,8 @@ Course Objectives
 The primary goal of this course is to introduce students to object-oriented programming and the Java language. 
 By the end of the course, students are expected to understand abstract data types and classes, inheritance and polymorphism, object-oriented program design, and user interfaces and GUI programming in Java. 
 They should also be able to effectively use Java's program development environment, work with collection classes and iteration protocols, and properly document their programs.""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=106631"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=106631",
+    message = "Remember to turn in your assignments on time!"
 )
 
 course6 = Course(
@@ -135,7 +140,8 @@ By the end of this course, students will be able to:
 2. Work comfortably on the Linux platform, utilizing its functionalities for program development.
 3. Understand and explain advanced programming techniques, including recursion, dynamic memory management, Standard Template Library (STL), data structures, and algorithms.
 4. Self-learn various programming techniques and apply them effectively in practical scenarios.""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=111631"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=111631",
+    message = "Remember to turn in your assignments on time!"
 )
 
 course7 = Course(
@@ -159,7 +165,8 @@ By the end of this course, students will:
 3. Be able to work with data sources and data acquisition, prepare and manipulate data.
 4. Perform exploratory data analysis, statistical and predictive analysis.
 5. Learn data visualization techniques and effective communication of data insights.""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=106505"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=106505",
+    message = "Remember to turn in your assignments on time!"
 )
 
 course8 = Course(
@@ -177,7 +184,8 @@ Course Objectives
 The course aims to present the fundamentals of operating systems and study the detailed operation and principles behind the design of various components of an operating system. 
 Topics covered include operating system structures, processes and threads, CPU scheduling, process synchronization, deadlocks, memory management, file systems;
 I/O systems and device drivers, mass-storage structure and disk scheduling, along with relevant case studies.""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=106508"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=106508",
+    message = "Remember to turn in your assignments on time!"
 )
 
 course9 = Course(
@@ -199,7 +207,8 @@ The course aims to extend the understanding of machine organization to include c
 It covers the design process of computer systems, the analysis of performance and cost, and the development of instruction sets, data-path and controller designs. 
 The course also introduces pipelining, memory systems, I/O design, GPU architecture, and advanced topics, with a focus on how these elements integrate to form complete systems. 
 By the end of the course, students should be able to understand and analyze various computer architectures and their components.""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=106510"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=106510",
+    message = "Remember to turn in your assignments on time!"
 )
 
 course10 = Course(
@@ -222,7 +231,8 @@ On successful completion of this course, students should be able to:
 - Calculate packet delay, throughput, channel efficiency under different network protocols.
 - Implement network protocols using Socket Interface, design network applications, and reliable data transfer protocols.
 - Plan for IP networks and assign IP addresses in given network scenarios.""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=112020"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=112020",
+    message = "Remember to turn in your assignments on time!"
 )
 
 course11 = Course(
@@ -243,7 +253,8 @@ By the end of this course, students will:
 2. Gain knowledge in graph algorithms and their applications.
 3. Learn about NP-complete problems and comprehend their importance in computer science.
 4. Develop skills to design efficient algorithms for solving complex computational problems.""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=96634"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=96634",
+    message = "Remember to turn in your assignments on time!"
 )
 
 course12 = Course(
@@ -266,7 +277,8 @@ Upon successful completion of this course, students will be able to:
 - Utilize the GHC compiler and the GHCI command line interpreter effectively.
 - Analyze and design solutions for problems using functional programming modeling techniques, model data structures as algebraic datatypes, and define operations by pattern matching.
 - Understand and explain advanced functional programming techniques such as recursion, datatypes, higher-order functions, functional data structures, and algorithms.""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=106518"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=106518",
+    message = "Remember to turn in your assignments on time!"
 )
 
 course13 = Course(
@@ -289,7 +301,8 @@ On successful completion of the course, students should be able to:
 [Programming languages fundamentals] Be able to understand the fundamental principles underlying various programming languages features
 [Programming language implementation] Be able to understand the basic algorithms in implementing simple programming languages
 [Programming language designs] Be able to understand some principles in the design of programming languages""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=96509"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=96509",
+    message = "Remember to turn in your assignments on time!",
 )
 
 course14 = Course(  
@@ -312,7 +325,8 @@ On successful completion of the course, students should be able to:
 [1] understand the basic principles and technologies of intelligent computer systems
 [2] explain the algorithms to achieve AI
 [3] develop some AI programs""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=106520"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=106520",
+    message = "Remember to turn in your assignments on time!"
 )
 
 course15 = Course(
@@ -335,7 +349,8 @@ On successful completion of the course, students should be able to:
 [Query Languages] Able to understand and use the languages designed for data access.
 [System Design] Able to understand the design issues of an efficient and reliable database system.
 [Application Development] Able to implement a practical application on a real database.""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=106523"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=106523",
+    message = "Remember to turn in your assignments on time!"
 )
 
 course16 = Course(
@@ -356,7 +371,8 @@ On successful completion of the course, students should be able to:
 [1] understand the motivations and principles for building adaptive systems based on empirical data, and how machine learning relates to the broader field of artificial intelligence
 [2] formulate problems associated with domain specific data (e.g., image classification, document clustering) in terms of abstract models of machine learning
 [3] implement solutions to machine learning problems using tools such as Matlab or Octave, apply numerical optimization algorithms""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=106593"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=106593",
+    message = "Remember to turn in your assignments on time!"
 )
 
 course17 = Course(
@@ -381,7 +397,8 @@ Able to use the basic rules of quantum theory: states, measurements, gates, comp
 [Modeling] Able to model basic information-theoretic tasks in the quantum domain: quantum communication, quantum games, quantum computation.
 [Higher-level reasoning]  Able to deduce new results from the basic knowledge provided in the course.
 [Self-learning] Able to self-learn a new topic and/or to approach a mini research problem.""",
-    moodle_link="https://moodle.hku.hk/course/view.php?id=96521"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=96521",
+    message = "Remember to turn in your assignments on time!"
 )
 
 course18 = Course(
@@ -404,7 +421,8 @@ On successful completion of the course, students should be able to:
 Able to master the key technologies about the World Wide Web and be able to contrast similar technologies.
 [Application Development]
 Able to implement web based systems to solving real-life problems """,
-    moodle_link="https://moodle.hku.hk/course/view.php?id=106598"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=106598",
+    message = "Remember to turn in your assignments on time!"
 )
 
 course19 = Course(
@@ -427,7 +445,8 @@ On successful completion of the course, students should be able to:
 [Recent Development in Database Research] Able to understand the background and knowledge of some contemporary topics in database research; typical topics are data mining, uncertain data management, XML data.
 [Recent Development in Information Management] Able to understand the background and knowledge of some contemporary topics in information management, typical topics are cloud computing, web information management, social network technology.
 [Application Development] Able to implement some practical application modules based on selected advanced database techniques. """,
-    moodle_link="https://moodle.hku.hk/course/view.php?id=77055"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=77055",
+    message = "Remember to turn in your assignments on time!"
 )
 
     
@@ -457,7 +476,8 @@ Be able to present the game idea in both written and oral form
 Be able to learn new development environment 
 [learn from other source codes and projects]
 Be able to learn from other source codes and projects """,
-    moodle_link="https://moodle.hku.hk/course/view.php?id=96525"
+    moodle_link="https://moodle.hku.hk/course/view.php?id=96525",
+    message = "Remember to turn in your assignments on time!"
 )
 Course.objects.all().delete()
 courses = [course1, course2, course3, course4, course5, course6, course7, course8, course9, course10, course11, course12, course13, course14, course15, course16, course17, course18, course19, course20]

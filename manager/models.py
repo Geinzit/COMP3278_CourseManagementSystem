@@ -21,7 +21,7 @@ class Course(models.Model):
     description = models.CharField(max_length = 1000, null = True, blank = True)
     course_information = models.TextField(max_length = 1000, null=True, blank=True)
     moodle_link = models.CharField(max_length = 100, null = True, blank = True)
- 
+    message = models.CharField(max_length = 1000, null = True, blank = True, default = "Remember to turn in your assignments on time!")
 
 class Login(models.Model):
     student = models.ForeignKey(Student, related_name = "student_login", on_delete = models.CASCADE)
