@@ -36,7 +36,7 @@
                     <td style="text-align: left;">{{ course.course_name }}</td>
 		    <td style="text-align: left;">{{ course.description }}</td>
                     <td style="text-align: left;"><a href="teacher/{{ course.teacher_id }}">{{ course.teacher.name }}</a></td>
-                    <td style="text-align: left;"><a href="course/{{ course.course_id }}">Check</a></td>
+                    <td style="text-align: left;"><a href="course/{{ course.course_id }}" id="check">Check</a></td>
                 </tr>
                 {% endfor %}
 
