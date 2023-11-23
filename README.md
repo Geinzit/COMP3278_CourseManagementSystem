@@ -22,23 +22,6 @@ Group Project for COMP3278
 * Course List: `http://host-address/manager`
 * Course Detail: `http://host-address/manager/course/?course-id={{ course_id }}`
 
-### Data Structure
-
-![ER Diagram](img/ER_diagram.jpg)
-
-### Features
-
-* Face Recognition-based Login and Authentication System 
-* Fully interactable course selection / removal system with a full fledged Course Timetable for easy visualization
-* Detecting and informing details on upcoming courses (in one hour to be precise)
-* Full list of viewable Courses, including their weekly schedules, and Lecturers' information
-### Design of URLs and Parameter
-
-* Login Page: `http://host-address/manager/login/`
-* Course Timetable: `http://host-address/manager/curriculum/`
-* Course List: `http://host-address/manager`
-* Course Detail: `http://host-address/manager/course/?course-id={{ course_id }}`
-
 ## How to Start
 
 1. Install all requirement package using conda
@@ -74,10 +57,6 @@ next, perform the migrations.
 ```bash
 python manage.py migrate
 ```
-next, perform the migrations.
-```bash
-python manage.py migrate
-```
 
 3. Run the server
 
@@ -93,10 +72,6 @@ python manage.py runserver
   * @Haoyu to finish it
   
 ## How to add our sample data to database(need refining)
-- Simply run `python manage.py load_data_fromPython`
-
-[Alternative]
-
 - Simply run `python manage.py load_data_fromPython`
 
 [Alternative]
