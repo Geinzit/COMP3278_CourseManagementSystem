@@ -26,44 +26,51 @@ def get_related_courseID(course_id):
     # print(related_courses)
     return related_courses
 
-tokenizer = AutoTokenizer.from_pretrained('facebook/contriever')
-model = AutoModel.from_pretrained('facebook/contriever')
-
 def mean_pooling(token_embeddings, mask):
     token_embeddings = token_embeddings.masked_fill(~mask[..., None].bool(), 0.)
     sentence_embeddings = token_embeddings.sum(dim=1) / mask.sum(dim=1)[..., None]
     return sentence_embeddings
 
 embeddings_dict = {}
+
+import pickle
+import os
+EMBEDDINGS_FILE = 'course_embeddings.pkl'
+
 def init():
     global embeddings_dict
 
     print("Initializing related courses...")
 
-    # 从数据库获取所有课程的信息及其ID
-    courses = Course.objects.all()
-    course_infos = [course.course_information for course in courses]
+    # 检查是否已存在嵌入缓存
+    if os.path.exists(EMBEDDINGS_FILE):
+        with open(EMBEDDINGS_FILE, 'rb') as file:
+            embeddings_dict = pickle.load(file)
+        print("Loaded embeddings from cache.")
+    else:
+        tokenizer = AutoTokenizer.from_pretrained('facebook/contriever')
+        model = AutoModel.from_pretrained('facebook/contriever')
+        courses = Course.objects.all()
+        course_infos = [course.course_information for course in courses if course.course_information]
 
-    # 检查课程信息是否为空
-    if not course_infos:
-        print("No course information found.")
-        return
+        if not course_infos:
+            print("No course information found.")
+            return
 
-    # 应用分词器
-    inputs = tokenizer(course_infos, padding=True, truncation=True, return_tensors='pt')
+        inputs = tokenizer(course_infos, padding=True, truncation=True, return_tensors='pt')
+        with torch.no_grad():
+            outputs = model(**inputs)
 
-    # 计算token嵌入
-    with torch.no_grad():
-        outputs = model(**inputs)
+        embeddings = mean_pooling(outputs[0], inputs['attention_mask'])
+        embeddings_dict = {course.course_id: embedding for course, embedding in zip(courses, embeddings)}
 
-    # 计算句子嵌入
-    embeddings = mean_pooling(outputs[0], inputs['attention_mask'])
+        # 保存嵌入到文件
+        with open(EMBEDDINGS_FILE, 'wb') as file:
+            pickle.dump(embeddings_dict, file)
 
-    # 将course_id与对应的嵌入关联起来
-    embeddings_dict = {course.course_id: embedding for course, embedding in zip(courses, embeddings)}
+        print("Embeddings generated and saved.")
 
-    print("Now is init on relared courses")
-    # Here is test code
+    # 测试代码
     print(get_related_courseID("030833"))
 
 init()
