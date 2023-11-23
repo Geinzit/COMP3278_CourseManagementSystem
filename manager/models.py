@@ -23,7 +23,11 @@ class Course(models.Model):
     moodle_link = models.CharField(max_length = 100, null = True, blank = True)
  
 
-
+class Login(models.Model):
+    student = models.ForeignKey(Student, related_name = "student_login", on_delete = models.CASCADE)
+    login_time = models.DateTimeField(null = True, blank = True)
+    logout_time = models.DateTimeField(null = True, blank = True)
+    
     
 class CourseSchedule(models.Model):
     WEEKDAY_CHOICES = {

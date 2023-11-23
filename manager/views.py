@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 
 from datetime import datetime, timedelta
-from .models import Student, Teacher, Course, CourseSchedule, Enrollment
+from .models import Student, Teacher, Course, CourseSchedule, Enrollment, Login
 
 import base64
 from PIL import Image
@@ -63,7 +63,7 @@ def remove_course(request, course_id):
         # Delete the enrollment object
         enrollment = Enrollment.objects.get(course=course, student=student)
         enrollment.delete()
-        messages.success(request,"Ssuccessfully dropped.")
+        messages.success(request,"Successfully dropped.")
         return redirect('/manager/course/'+str(course_id)) 
 
 def add_course(request, course_id):
@@ -103,7 +103,7 @@ def add_course(request, course_id):
         enrollment = Enrollment(course=course, student=student)
         enrollment.save()
 
-        messages.success(request,"Ssuccessfully enrolled.")
+        messages.success(request,"Successfully enrolled.")
         return redirect('/manager/course/'+str(course_id)) 
         #return redirect('/manager')  # Redirect to the curriculum page after enrollment
 
@@ -127,22 +127,26 @@ def teacher(request, teacher_id):
     
 def login_page(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        image_data = request.POST.get('photo')
-        format, imgstr = image_data.split(';base64,') 
-        image = Image.open(BytesIO(base64.b64decode(imgstr)))
+        try:
+            username = request.POST.get('username')
+            image_data = request.POST.get('photo')
+            format, imgstr = image_data.split(';base64,') 
+            image = Image.open(BytesIO(base64.b64decode(imgstr)))
 
-        # 在这里处理用户名和照片
-        # 例如，保存照片，验证用户名等
-        student_id = face_rec(pil_to_cv2(image))
-
+            # 在这里处理用户名和照片
+            # 例如，保存照片，验证用户名等
+            student_id = face_rec(pil_to_cv2(image))
+        except:
+            return HttpResponse("No photo taken!")
         # 打印用户名和识别出的学生名字
         print(f"Username: {username}, Recognized as: {student_id}")
 
         # for testing
-        student_id = "3035844077" 
+        # student_id = "3035844077" 
         try:
             student = Student.objects.get(name = student_id)
+            if username != student_id:
+                return HttpResponse("Incorrect Username")
             request.session['authentication'] = student_id
             #record login time
             student.login_time = timezone.localtime(timezone.now())
@@ -156,7 +160,28 @@ def login_page(request):
 
     return render(request, 'login.html')
 
+def login_history(request):
+    if request.session.get('authentication', None) is None:
+        return redirect('/manager/login')
+
+    login_filter = Login.objects.filter(student = request.session['authentication'])
+    records = []
+
+    for record in login_filter:
+        deltatime = (record.logout_time - record.login_time)
+        deltatime = f"{deltatime.seconds // 3600} hours, {(deltatime.seconds // 60) % 60} minutes, {deltatime.seconds % 60} seconds"
+        records.append((record.login_time.strftime("%Y-%m-%d %H:%M:%S"), record.logout_time.strftime("%Y-%m-%d %H:%M:%S"), deltatime))
+    return render(request, 'login_history.html', {'records': records})
+
 def logout(request):
+    if request.session.get('authentication', None) is None:
+        return redirect('/manager/login')
+    
+    student = Student.objects.get(name = request.session['authentication'])
+    record = Login(login_time = student.login_time, logout_time = timezone.localtime(timezone.now()), student = student)
+
+    record.save()
+    
     request.session.flush()
     return redirect('/manager/login')
 
