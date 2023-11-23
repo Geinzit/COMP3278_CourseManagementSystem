@@ -12,7 +12,7 @@
     <div id="welcomeInfo">
         <div class="containerBody">
             <h1>{{student_name}}, Welcome!</h1>
-            <h3>Login time:</h3>
+            <h3>Login time: {{ login_time }}</h3>
             <a href="/manager/" class="list-link">View Course List</a>
         </div>
     </div>
@@ -46,10 +46,14 @@
                     <tr>
                         <td>{{ t_start|time:"H:i" }} - {{ t_end|time:"H:i" }}</td>
                         {% for course_day in course_schedule %}
-                             <td>
-                                {% for weekday, start_time, end_time, course_name in course_day %}
+                            <td>
+                                {% for weekday, start_time, end_time, course, duration in course_day %}
                                     {% if start_time <= t_start and t_end <= end_time %}
-                                        {{ course_name }}<br>
+                                        {%if start_time == t_start and duration == 110 %}
+                                            <a href="{% url 'course_detail' course.course_id %}" class="session">{{ course.course_name }}</a>
+                                        {%elif t_end == end_time and duration == 110 %}
+                                            <p class="secondSession"></p>
+                                        {% endif %}
                                     {% endif %}
                                 {% endfor %}
                             </td>
@@ -59,7 +63,31 @@
             </tbody>
         </table>
 
+        <script>
+            var lectureBlock = document.querySelectorAll('.session');
+            var secondSession = document.querySelectorAll('.secondSession');
+
+            lectureBlock.forEach(function(element) {
+                // Get the parent node of the lecture element
+                var parentNode = element.parentNode;
+                parentNode.setAttribute('rowspan', '2');
+                parentNode.classList.add("Lecture");
+                parentNode.nextSibling.remove();
+            });
+
+            secondSession.forEach(function(element) {
+                // Get the parent node of the lecture element
+                var parentNode = element.parentNode;
+                parentNode.remove();
+            });
+        </script>
     </div>
 
+    <div class="buttons">
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" id="logoutButton" style="margin-left: 50%;">Log Out</button>
+        </form>
+    </div>
 </body>
 </html>

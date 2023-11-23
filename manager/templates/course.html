@@ -13,7 +13,7 @@
     <div class="banner">
         <div class="text">
             <h1>{{ course.description }}</h1><br>
-            <a href="/manager/" class="detail-link">Back to Course List</a>
+            <a href="/manager/"  style="color:white;text-decoration: underline;">Back to Course List</a>
 
         </div>
         <img src="{% static 'img/banner.png' %}" alt="">
@@ -57,15 +57,20 @@
                 {% csrf_token %}
                 <button type="submit" id="enrollButton">Enroll in Course</button>
             </form>
-            <script>
-                // Add event listener to the button
-                var enrollButton = document.getElementById("enrollButton");
-                enrollButton.addEventListener("click", function() {
-                    // Display an alert when the button is clicked
-                    alert("Successfully enrolled!");
-                });
-            </script>
+             <!-- remove_course -->
+            <form action="{% url 'remove_course' course.course_id %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Drop Course</button>
+            </from>
         </div>
+        {% if messages %}
+        <div class="messages">
+            <br>
+            {% for message in messages %}
+            <h2{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h2>
+            {% endfor %}
+        </div>
+        {% endif %}
 
         </div>
     </div>

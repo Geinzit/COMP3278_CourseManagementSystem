@@ -23,10 +23,9 @@
                 <img class="icon" src="{% static 'img/reminder.png' %}">
                 <h3>You have class within one hour!</h3>
             </div>
-            <p> Current Time: {{ current_time }} </p>
             {% for session in sessions1h %}
                 <p>Time: {{ session.start_time }} </p>
-                <p>Classroom address: {{ session.course.course_name }}</p>
+                <p>Classroom address: {{ session.classroom_address }}</p>
             {% endfor %}
         </div>
         <ul>
@@ -36,7 +35,8 @@
                         {% for session in sessions1h %}
                             <p>Course Name: {{session.course.course_name}}</p>
                             <p>Course ID: {{session.course.course_id}} </p>
-                            <p>Course Teacher: <a href="teacher/{{session.course.teacher.id}}/"> {{session.course.teacher.name}} </a> </p>
+                            <p>Course Teacher: <a href="/manager/teacher/{{session.course.teacher.id}}/"> {{session.course.teacher.name}} </a> </p>
+                            <p>View Course Moodle: <a href={{session.course.moodle_link}}> View</a> </p>
                         {% endfor %}
 
                 </div>
@@ -70,9 +70,19 @@
         </ul>
 
         <div id="email">
-            <input class="buttons" type="submit" value="Send to my email">
-        </div>
+	    <form method="post" action="{% url 'send_email' %}">
+                {% csrf_token %}
+		<input class="buttons" type="submit" value="Send Email Notification">
+            </from>
+	</div>
     </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
 </body>
 </html>

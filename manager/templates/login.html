@@ -12,7 +12,7 @@
             <h1>Login Page</h1>
             <form method="post" action="{% url 'login' %}" enctype="multipart/form-data">
             {% csrf_token %}
-            <label for="username">Username:</label>
+            <label for="username">Student ID(UID):</label>
             <input type="text" id="username" name="username" required><br><br>
             <div id="faceLogin">
                 <video id="video" width="640" height="480" autoplay></video>

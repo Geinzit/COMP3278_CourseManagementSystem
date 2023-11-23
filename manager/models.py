@@ -5,7 +5,7 @@ class Student(models.Model):
     usrname = models.CharField(max_length = 100, null = True, blank = True)
     email = models.CharField(max_length = 100, null = True, blank = True)
     bio = models.CharField(max_length = 1000, null = True, blank = True)
-
+    login_time = models.DateTimeField(null = True, blank = True)
     
 class Teacher(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -20,6 +20,7 @@ class Course(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete = models.CASCADE, null = True, blank = True)
     description = models.CharField(max_length = 1000, null = True, blank = True)
     course_information = models.TextField(max_length = 1000, null=True, blank=True)
+    moodle_link = models.CharField(max_length = 100, null = True, blank = True)
  
 
 
@@ -40,6 +41,7 @@ class CourseSchedule(models.Model):
     weekday = models.IntegerField(choices = WEEKDAY_CHOICES, default = 0)
     start_time = models.TimeField(null = True, blank = True)
     end_time = models.TimeField(null = True, blank = True)
+    classroom_address = models.CharField(max_length = 100, null = True, blank = True)
 
 
     
