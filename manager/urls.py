@@ -12,4 +12,7 @@ urlpatterns = [
     path('add_course/<str:course_id>/', views.add_course, name='add_course'),
     path('remove_course/<str:course_id>/', views.remove_course, name='remove_course'),
     path('send_email/', views.send_email, name='send_email'),
+    path('schedule/', views.schedule, name='schedule'),
+    path('timetable/', views.timetable, name='timetable')
+
 ]
