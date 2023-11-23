@@ -141,13 +141,12 @@ a {
 
 .detail-link{
     display: inline-block;
-    padding: 0px 2px;
-    background-color: #e6e6e6;
-    border: 1px solid rgb(84, 84, 84);
+    padding: 3px 5px;
+    background-color: #4d9f3b;
+    border: 0;
     text-decoration: none;
-    color: #000;
+    color: white;
     font-size: small;
-    border-radius: 4px;
 }
 
 .success{
@@ -158,4 +157,11 @@ a {
 .error{
     text-align: center;
     color:red;
+}
+
+#dropButton, #enrollButton {
+    padding:5px;
+    background: #4d9f3b;
+    color: white;
+    border: 0;
 }

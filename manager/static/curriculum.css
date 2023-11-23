@@ -48,3 +48,22 @@ li > div{
     padding-bottom: 20px;
     text-align: center;
 }
+
+.buttons {
+    height: 30px;
+    width: 30%;
+    background: #4d9f3b;
+    color: white;
+    border: 0;
+}
+
+.list-link{
+    display: inline-block;
+    padding: 0px 2px;
+    background-color: #e6e6e6;
+    border: 1px solid black;
+    text-decoration: none;
+    color: #000;
+    font-size: small;
+    text-align: center;
+}
