@@ -5,10 +5,6 @@ Group Project for COMP3278
 
 This is an interactive Course Selection / Management System. The system uses facial recognition to authenticate the user. And all logged in Users can freely enroll/drop courses from our featured course list. Through this information, you can view your course timetable, as well as receive notification from upcoming courses in 1 hour. You can also view each course's detailed information and its Lecturer's information. You can also view recommended courses on a course detail page based on similarities in the course information page. Finally, you can send and email notification to remind yourself of your upcoming courses.
 
-### Data Structure
-
-![ER Diagram](img/ER_diagram.jpg)
-
 ### Features
 
 * Face Recognition-based Login and Authentication System 
@@ -69,10 +65,11 @@ python manage.py runserver
 
 * Add user face data:
   * run `manager/face_data.py` to collect the data and train the model
-* Add user course data:
-  * @Haoyu to finish it
+* Add user in database:
+  * You need a Student type data in models.py with UID
+  * Either add them through the SQL server, or add them into our sample file student_data.py, and then check out the next section
   
-## How to add our sample data to database(need refining)
+## How to add our sample data to database
 - Simply run `python manage.py load_data_fromPython`
 
 [Alternative]
@@ -95,6 +92,12 @@ python manage.py runserver
      ```
 
    * Step 2: Modify the `manager/face_data.py`, then run the code to train the model
+     
+     ```python
+     if __name__ == "__main__":
+         # capture_data(user_name="UID YOU WANT")
+         train_model("data/data", "data")
+     ```
 ## How to set up the email notification system
 
 0. Go to courseManager/settings.py and find the EMAIL settings:
