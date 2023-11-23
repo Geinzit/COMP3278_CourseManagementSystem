@@ -28,6 +28,7 @@ This is an interactive Course Selection / Management System. The system uses fac
 
 ```bash
 conda create -n comp3278 python=3.11
+conda activate comp3278
 pip install -r requirements.txt
 ```
 
