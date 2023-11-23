@@ -59,11 +59,7 @@ li > div{
 
 .list-link{
     display: inline-block;
-    padding: 0px 2px;
-    background-color: #e6e6e6;
-    border: 1px solid black;
-    text-decoration: none;
-    color: #000;
-    font-size: small;
-    text-align: center;
+    color: blue;
+    padding-right: 15px;
+    font-weight: bold;
 }
