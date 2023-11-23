@@ -12,8 +12,9 @@
     <div id="welcomeInfo">
         <div class="containerBody">
             <h1>{{student_name}}, Welcome!</h1>
-            <h3>Login time:</h3>
-            <a href="/manager/" class="list-link">View Course List</a>
+            <h3>Login time: {{ login_time }}</h3>
+            <p><a href="/manager/" class="list-link">View Course List</a></p>
+            <p><a href="/manager/timetable" class="list-link">View Timetable</a></p>
         </div>
     </div>
 
@@ -24,6 +25,7 @@
                 <h3>You have class within one hour!</h3>
             </div>
             {% for session in sessions1h %}
+                <p>Course: {{session.course.course_name}}</p>
                 <p>Time: {{ session.start_time }} </p>
                 <p>Classroom address: {{ session.classroom_address }}</p>
             {% endfor %}

@@ -13,20 +13,32 @@
         <div class="containerBody">
             <h1>{{student_name}}, Welcome!</h1>
             <h3>Login time: {{ login_time }}</h3>
-            <a href="/manager/" class="list-link">View Course List</a>
+            <p><a href="/manager/" class="list-link">View Course List</a></p>
+            <p><a href="/manager/curriculum" class="list-link">View Upcomig Courses</a></p>
         </div>
     </div>
-
-    <div id="reminder">
-        <div class="row">
-            <img class="icon" src="{% static 'img/noClass.webp' %}">
-            <h3>You have no class within one hour</h3>
+    <div id="reminder" style="background-color: #cff536a7;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    padding: 10px;">
+        <div class="row" style="display: flex;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.65);">
+            <img class="icon" src="{% static 'img/reminder.png' %}">
+            <h3>You have class within one hour!</h3>
         </div>
+        {% for session in sessions1h %}
+            <p>Course: {{session.course.course_name}}</p>
+            <p>Time: {{ session.start_time }} </p>
+            <p>Classroom address: {{ session.classroom_address }}</p>
+        {% endfor %}
     </div>
 
     <div id="timetable">
         <h2>Course Schedule</h2>
-        <table>
+
+	<table>
             <thead>
                 <tr>
                     <th>&nbsp;</th>
@@ -39,7 +51,6 @@
                     <th>Sun</th>
                 </tr>
             </thead>
-        
             <tbody>
                 {% for t_start, t_end in time_ranges %}
                     {% for i in "12" %}

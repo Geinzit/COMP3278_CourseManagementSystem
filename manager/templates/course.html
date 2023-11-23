@@ -60,7 +60,7 @@
              <!-- remove_course -->
             <form action="{% url 'remove_course' course.course_id %}" method="post">
                 {% csrf_token %}
-                <button type="submit">Drop Course</button>
+                <button type="submit" id="dropButton">Drop Course</button>
             </from>
         </div>
         {% if messages %}
