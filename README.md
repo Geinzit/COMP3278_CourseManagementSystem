@@ -3,7 +3,7 @@ Group Project for COMP3278
 
 ## Introduction
 
-[TODO]
+This is an interactive Course Selection / Management System. The system uses facial recognition to authenticate the user. And all logged in Users can freely enroll/drop courses from our featured course list. Through this information, you can view your course timetable, as well as receive notification from upcoming courses in 1 hour. You can also view each course's detailed information and its Lecturer's information. You can also view recommended courses on a course detail page based on similarities in the course information page. Finally, you can send and email notification to remind yourself of your upcoming courses.
 
 ### Data Structure
 
