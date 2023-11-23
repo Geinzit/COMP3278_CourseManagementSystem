@@ -13,8 +13,10 @@
         <div class="containerBody">
             <h1>{{student_name}}, Welcome!</h1>
             <h3>Login time: {{ login_time }}</h3>
-            <p><a href="/manager/" class="list-link">View Course List</a></p>
-            <p><a href="/manager/timetable" class="list-link">View Timetable</a></p>
+            <a href="/manager/login_history/" class="list-link">Login History</a>
+            <a href="/manager/" class="list-link">View Course List</a>
+            <a href="/manager/timetable" class="list-link">View Timetable</a>
+            
         </div>
     </div>
 
@@ -48,7 +50,7 @@
                 <div id="teacherMsg">
                     <h3>Teacher's Message</h3>
                     {% for session in sessions1h %}
-                        <p>{{session.course.teacher.bio}}</p>
+                        <p></p>
                     {% endfor %}
                 </div>
             </li>
