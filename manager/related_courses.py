@@ -41,7 +41,7 @@ def init():
     print("Initializing related courses...")
 
     # 从数据库获取所有课程的信息及其ID
-    courses = Course.objects.filter(course_information__isnull=False)
+    courses = Course.objects.all()
     course_infos = [course.course_information for course in courses]
 
     # 检查课程信息是否为空
