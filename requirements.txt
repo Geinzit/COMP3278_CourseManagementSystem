@@ -7,3 +7,6 @@ Pillow
 pysimplegui
 django
 mysqlclient
+transformers
+torch
+scipy

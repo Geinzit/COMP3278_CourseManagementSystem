@@ -16,6 +16,8 @@ from io import BytesIO
 from .models import Student, Teacher, Course, CourseSchedule, Enrollment
 from .face_rec import face_rec, pil_to_cv2
 
+from .related_courses import get_related_courseID
+
 def send_email(request):
     if(request.session.get('authentication', None) is None):
         return redirect('/manager/login')
@@ -116,8 +118,9 @@ def index(request):
 def course(request, course_id):
     course = Course.objects.get(course_id = course_id)
     course_schedules = CourseSchedule.objects.filter(course = course_id)
+    related_courseID = get_related_courseID(course_id)
+    # TODO: add Related course function
     context = {"course":course, "course_schedules":course_schedules}
-
     return render(request, "course.html", context)
     
 def teacher(request, teacher_id):
